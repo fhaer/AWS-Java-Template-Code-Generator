@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uniba.wiai.seda.fha.som.aws.soa/src-gen" editDirectory="/de.uniba.wiai.seda.fha.som.aws.soa.edit/src"
+    editorDirectory="/de.uniba.wiai.seda.fha.som.aws.soa.editor/src" modelPluginID="de.uniba.wiai.seda.fha.som.aws.soa"
+    forceOverwrite="true" modelName="Soa" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.uniba.wiai.seda.fha.som.aws.soa.edit"
+    editorPluginID="de.uniba.wiai.seda.fha.som.aws.soa.editor" runtimeVersion="2.9"
+    usedGenPackages="../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.genmodel#//aws">
+  <genPackages prefix="Soa" basePackage="de.uniba.wiai.seda.fha.som.aws.soa" disposableProviderFactory="true"
+      fileExtensions="soaaws" ecorePackage="Soa.ecore#/">
+    <genClasses ecoreClass="Soa.ecore#//SOA_AwS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//SOA_AwS/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//SOA_AwS/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//SOA_AwS/vos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//SOA_AwS/kos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//SOA_AwS/vorgangsservices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//SOA_AwS/entityservices"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//Service/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Vorgangsservice">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Vorgangsservice/choreographieIF"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Vorgangsservice/vorgangsservicesElementar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Vorgangsservice/workflow"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//VorgangsserviceElementar">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//VorgangsserviceElementar/komponentenObjekttyp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//VorgangsserviceElementar/interface"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//Interface/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Interface/methoden"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//ServiceMethode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//ServiceMethode/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//ServiceMethode/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Workflow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Workflow/orchestrierung"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Workflow/choreographie"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Orchestrierung">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Orchestrierung/bedingung"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//Orchestrierung/methode1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//Orchestrierung/methode2"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//ChoreographieLokal">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//ChoreographieLokal/bedingung"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//ChoreographieLokal/methode1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//ChoreographieLokal/service2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//ChoreographieLokal/methode2"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Bedingung">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//Bedingung/bedingung"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Entityservice">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Entityservice/interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Entityservice/entities"/>
+    </genClasses>
+    <genClasses ecoreClass="Soa.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Soa.ecore#//Entity/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Soa.ecore#//Entity/komponentenObjekttyp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Soa.ecore#//Entity/interface"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

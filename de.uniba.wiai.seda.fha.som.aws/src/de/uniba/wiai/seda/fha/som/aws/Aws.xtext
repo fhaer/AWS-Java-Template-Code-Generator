@@ -1,0 +1,80 @@
+grammar de.uniba.wiai.seda.fha.som.aws.Aws with de.uniba.wiai.seda.fha.annotation.Annotation
+
+generate aws "http://www.uniba.de/wiai/seda/fha/som/aws/Aws"
+
+AwS:
+	"AwS:" name=ID ("v"version=VERSION_NUMBER)?
+	(kos=KOS & vos=VOS);
+
+Schema:
+	VOS | KOS;
+
+VOS:
+	(name="VOS"|name=ID) "{" 
+		(objekttypen+=VOT | beziehungen+=Interacts_with | gliederung+=VOS)+
+	"}";
+	
+KOS:
+	(name="KOS"|name=ID) "{"
+		(objekttypen+=KOT | beziehungen+=Beziehung | gliederung+=KOS)+
+	"}";
+	
+Objekttyp:
+	VOT | KOT;
+
+VOT:
+	(annotation=Annotation)? "VOT" name=ID "{"
+	(attribute+=Attribut | operatoren+=Operator)*
+	"}";
+
+KOT:
+	OOT | LOT | TOT;
+
+OOT:
+	(annotation=Annotation)? "OOT" name=ID "{"
+	(attribute+=Attribut | operatoren+=Operator)*
+	"}";
+
+LOT:
+	(annotation=Annotation)? "LOT" name=ID "{"
+	(attribute+=Attribut | operatoren+=Operator)*
+	"}";
+
+TOT:
+	(annotation=Annotation)? "TOT" name=ID "{"
+	(attribute+=Attribut | operatoren+=Operator)*
+	"}";
+
+Attribut:
+	(typ=[Objekttyp])? name=ID ";";
+
+Operator:
+	name=ID "("parameter+=[Objekttyp]*")"";";
+
+Beziehung:
+	Interacts_with | Is_a | Is_part_of;
+
+Interacts_with:
+	(annotation=Annotation)? "interacts_with:"? objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp] ";";
+
+Is_a:
+	(annotation=Annotation)? "is_a:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet11) objekttyp2=[Objekttyp] ";";
+
+Is_part_of:
+	(annotation=Annotation)? "is_part_of:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp] ";";
+
+Kardinalitaet:
+	Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet11 | Kardinalitaet1x;
+
+Kardinalitaet01:
+	("--" | "(0,1)") {Kardinalitaet01};
+
+Kardinalitaet0x:
+	("->" | "(0,*)") {Kardinalitaet0x};
+
+Kardinalitaet11:
+	("==" | "(1,1)") {Kardinalitaet11};
+
+Kardinalitaet1x:
+	("=>" | "(1,*)") {Kardinalitaet1x};
+	
