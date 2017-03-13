@@ -1,0 +1,160 @@
+SOA-AwS: Mobility_Provision v 0.1 
+VOS {
+	Auftragsverwaltung {
+		VOT >Buchung { 
+			Kunde k;
+			Mietpreisverzeichnis m; 
+			EShopBuchung e;
+			buchung() ;
+		} 
+		VOT Bereitstellungsanfrage> {
+			Buchung b;
+			anfrage( );
+		}
+		VOT >Bereitstellungsbestaetigung {
+			Buchung b;
+			Bereitstellung b;
+			bestaetigung( );
+		}
+		>Buchung -> Bereitstellungsanfrage>;
+	}
+	Mobilitaetsbereitstellung {
+		VOT >Bereistellungsanfrage {
+			Bereitstellung b;
+			anfrage( );
+		}
+		VOT Bereistellungsbestaetigung> {
+			Bereitstellung b;
+			bestaetigung( );
+		}
+		>Bereistellungsanfrage -> Bereistellungsbestaetigung>;
+	}
+}
+KOS {
+	LOT Mietpreisverzeichnis {
+		Grundpreis;
+		Kilometerpreis;
+		gerGrundpreis( );
+		getKilometerpreis( );
+	}
+	OOT Kunde {
+		KundenNr;
+		Name;
+		Adresse;
+		getName( );
+		getAdresse( );
+		setName( );
+		setAdresse( );
+	}
+	OOT EShop {
+		SessionNr;
+		getSessionNr( ); 
+	}
+	OOT Auftragsverwaltung {
+		Auftragsverwaltung;
+		getX( );
+	}
+	TOT EShopBuchung {
+		EShopBuchungNr;
+		getEShopBuchungNr( );
+	}
+	TOT Buchung {
+		BuchungNr;
+		KundenNr;
+		buchungsbeginn;
+		buchungsende;
+		bereistellungsort;
+		rueckgabeort;
+		getKundeNr( );
+		getBuchungsbeginn( );
+		getBuchungsende( );
+		getBereitstellungsort( );
+		getRueckgabeort( );
+		setBuchungsbeginn( );
+		setBuchungsende( );
+		setBereitstellungsort( );
+		setRueckgabeort( );
+	}
+	TOT Bereitstellung {
+		BereitstellungNr;
+		BuchungNr;
+		BereistellungVorgemerkt;
+		BereistellungAusgefuehrt;
+		getBereitstellungVorgemerkt( );
+		getBereitstellungAusgefuehrt( );
+		setBereitstellungVorgemerkt( );
+		setBereitstellungAusgefuehrt( );
+	}
+	Kunde -> EShopBuchung;
+	Mietpreisverzeichnis -> EShopBuchung;
+	EShop -> EShopBuchung;
+	Auftragsverwaltung -> Buchung;
+	EShopBuchung -- Buchung;
+	Buchung -- Bereitstellung;
+}
+
+
+Vorgangsservice Buchungsservice {
+	Interface {
+		buchung();
+		bestaetigung();
+	}
+	
+	BuchungService VOT >Buchung Interface {
+		buchung();
+	}
+	AnfrageService VOT Bereitstellungsanfrage> Interface {
+		anfrage();
+	}
+	BestaetigungService VOT >Bereitstellungsbestaetigung Interface {
+		bestaetigung();
+	}
+	 
+	Workflow {
+		buchung -> anfrage;
+		anfrage -> Bereitstellungsservice.anfrage; 
+	} 
+}
+
+
+Vorgangsservice Bereitstellungsservice {
+	Interface {
+		anfrage(BereitstellungEntity);
+	}
+	 
+	AnfrageService VOT Bereitstellungsanfrage> Interface {
+		anfrage(BereitstellungEntity);
+	}
+	BestaetigungService VOT >Bereitstellungsbestaetigung Interface {
+		bestaetigung();
+	}
+	
+	Workflow {
+		anfrage -> bestaetigung; 
+		bestaetigung -> Buchungsservice.bestaetigung;
+	}
+}
+
+Entityservice BuchungBereitstellungService {
+	Interface {
+		createBuchung();
+		getBuchung();
+		updateBuchung();
+		createBereitstellung();
+		getBereitstellung();
+		updateBereitstellung();
+	}
+	BuchungEntity KOT Buchung
+	BereitstellungEntity KOT Bereitstellung
+}
+
+Entityservice KundeService {
+	Interface {
+		createKunde();
+		getKunde();
+		updateKunde();
+	}
+	Kunde KOT Kunde
+}
+
+

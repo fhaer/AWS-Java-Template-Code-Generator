@@ -1,0 +1,199 @@
+modeltype Annotations uses annotation('http://www.uniba.de/wiai/seda/somsl/annotation/Annotation');
+modeltype SOMAwS uses somSLMarked('http://www.uniba.de/wiai/seda/somslmarked/SomSLMarked');
+modeltype ServiceModel "strict" uses serviceModel('http://www.uniba.de/wiai/seda/servicemodel/ServiceModel');
+
+transformation awsToServices(in source : SOMAwS, out target : ServiceModel);
+
+main() {
+	source.rootObjects()[AwS] -> map AwSModelToServiceModell();
+}
+
+mapping AwS::AwSModelToServiceModell() : ServiceModell {
+	result.name := self.name;
+	result.version := self.version;
+	//self.vos -> select(a | a.oclIsKindOf(Objekttyp))[Objekttyp] -> map ObjekttypToService();
+	//self.allSubobjectsOfKind(Objekttyp)[Objekttyp] -> map ObjekttypToService();
+	 //var vs : List(Vorgangsservice) := self.vos![VOS] -> map vosToVorgangsservices();
+	 
+	//result.services += self.vos.allSubobjectsOfKind(VOT)[VOT] -> map votToService();
+	//map merge(result);
+	//result.services += self.vos.allSubobjectsOfKind(VOT)[VOT] -> map votToService2();
+	
+	var serviceIDsKOS := getServiceIDsToMerge(self.kos);
+	var serviceIDsVOS := getServiceIDsToMerge(self.vos);
+	serviceIDsKOS->forEach(serviceID) {
+		var kots := getMergableOTs(self.kos, serviceID)[KOT];
+		result.services += kots -> map mergeToEntityservice();
+	};
+	serviceIDsVOS->forEach(serviceID) {
+		var vots := getMergableOTs(self.vos, serviceID)[VOT];
+		result.services += vots -> map mergeToVorgangsservice();
+	};
+	
+	//result.services += self.allSubobjectsOfType(Objekttyp) -> select(objekttyp | self.allSubobjectsOfType(Objekttyp).oclIsKindOf(Objekttyp))[Objekttyp] -> map objekttypToService();
+	//eClassifiers += self.greetings -> select(a | a.oclIsKindOf(Greeting))[Greeting] -> map defGreeting2EClass(); 
+	//end { 
+	//	-- nachdem alle EClasses angelegt wurden, kann man die Referenzen setzen 
+	//	result.eClassifiers -> forEach (eClassifier | eClassifier.oclIsKindOf(EClass)) { 
+	//		map createReferences(eClassifier.oclAsType(EClass)); 
+	//	} 
+	//} 
+} 
+
+query getMergableOTs(schema : Schema, name : String) : Set(Objekttyp) 
+{
+	var objekttypen : Set(Objekttyp);
+	schema.allSubobjectsOfKind(Objekttyp)[Objekttyp] -> forEach(objekttyp | objekttyp.annotation.oclIsTypeOf(Merge)) {
+		if (objekttyp.annotation![Merge].name = name) then {
+			objekttypen += objekttyp;
+		} endif;
+	};
+	return objekttypen;
+}
+
+query getServiceIDsToMerge(schema : Schema) : Set(String) 
+{
+	var mmerge : Set(String);
+	schema.allSubobjectsOfKind(Objekttyp)[Objekttyp] -> forEach(objekttyp | objekttyp.annotation.oclIsTypeOf(Merge)) {
+		var name := getServiceName(objekttyp);
+		mmerge += name;		
+	};
+	return mmerge;
+	//mmerge -> map mergeToVorgangsservice();
+}
+
+query getServiceName(objekttyp:Objekttyp) : String {
+	var annotation := objekttyp.annotation;
+	if (annotation.oclIsTypeOf(Merge)) then {
+		return annotation![Merge].name;
+	} endif;
+	return objekttyp.name;
+}
+
+mapping Set(KOT)::mergeToEntityservice() : Entityservice {
+	self -> forOne(kot) { 
+		result.name := kot.annotation![Merge].name; 
+	};
+	self -> forEach(kot) {
+		result.entities += kot -> map kotToEntity();
+	};
+}
+
+mapping Set(VOT)::mergeToVorgangsservice() : Vorgangsservice {
+	self -> forOne(vot) { 
+		result.name := vot.annotation![Merge].name; 
+	};
+	self -> forEach(vot) {
+		result.services += vot -> map votToVorgangsserviceElementar();
+	};
+}
+
+mapping KOT::kotToEntity() : Entity {
+	result.name := self.name;
+}
+
+mapping VOT::votToVorgangsserviceElementar() : VorgangsserviceElementar {
+	result.name := self.name;
+}
+
+mapping merge(inout s : ServiceModell) when {true} { 
+	s.services -> forEach(s1) {
+		s.services -> forEach(s2) {
+			if (s1 != s2 and s1.name = s2.name) then {
+				//s2.name := "";
+				//s.services[Service] -> select(sv | sv.name = sr.name)![Service].name := "";
+			} endif;
+		}
+	}
+} 
+ 
+
+mapping Objekttyp::ObjekttypToService() : Service 
+	disjuncts 
+		VOT::votToService;
+
+mapping VOT::votToService() : Vorgangsservice 
+when { self.annotation.oclIsTypeOf(Merge) }
+{
+	init {
+		var nname := self.annotation.oclAsType(Merge).name;
+		//var vorgansservice := source.rootObjects().allSubobjectsOfKind(Vorgangsservice)[Vorgangsservice] -> select(v | v.name.equalsIgnoreCase(nname));
+		var vorgansservice := target.rootObjects().allSubobjectsOfKind(Vorgangsservice)[Vorgangsservice] -> select(v | v.name.equalsIgnoreCase(nname));
+		var exists := target.rootObjects().allSubobjectsOfKind(Vorgangsservice)[Vorgangsservice]->exists(v | v.name.equalsIgnoreCase(nname));
+		
+		target.rootObjects()[ServiceModell].services -> forEach (s) {
+			if (s.name = nname) then {
+				result := null;
+			} endif;
+		};
+		if (exists) then {
+			result := null;
+		} endif;
+	}
+	result.name := nname;
+	/*
+	result.name := self.annotation.oclAsType(Merge).name;
+	self.container() -> select(vot | vot.oclIsTypeOf(VOT) and vot![VOT].annotation![Merge].name.equalsIgnoreCase(name));
+	self.resolveone();
+	*/
+	
+	self.container().allSubobjectsOfKind(Merge) -> forEach (name | name![String].equalsIgnoreCase(nname)) { 
+		// merge
+	} 
+}
+
+mapping VOS::vosToVorgangsservices() : List(Vorgangsservice) {
+	init {
+		var lastname = "_init_";
+		self.allSubobjectsOfKind(VOT)[VOT] -> forEach (vot | lastname = "_init_") {
+			var serviceName := self.name;
+			if (vot.annotation.oclIsTypeOf(Merge)) then {
+				serviceName := vot.annotation![Merge].name;
+			} endif;
+			// access target!! 
+			if (target.rootObjects()[ServiceModell].allSubobjectsOfKind(Vorgangsservice)[Vorgangsservice]->exists(v | v.name = serviceName)) then {
+			
+				// merge
+			} else {
+				result->add(object Vorgangsservice {
+					name := serviceName;
+				});
+			} endif;
+		}
+	}
+}
+
+mapping Objekttyp::mapName() : Service {
+	result.name := self.name;
+}
+
+mapping OOT::ootToService() : Entity // inherits ...
+{
+	result.attribute := null;
+}
+mapping Beziehung :: defGreeting2EClass() : Interaktion
+{
+	//result.name := "myGreetingEclass" + self.toString().substringAfter("@").substringBefore(" ");
+}
+
+mapping createReferences(inout eClass : AwS) when {true} { 
+	//eClass.eStructuralFeatures := EClass.allInstances() -> select(a : EClass | 
+	//a.name = eClass.name) -> ownedAttribute -> map Property2EReferences(); 
+} 
+ 
+
+mapping Objekttyp::XObjekttypToService() : Service 
+{
+	/*
+	init {
+		if (self.oclIsKindOf(OOT)) then 
+			result := object Entityservice {}
+		else if (self.oclIsKindOf(VOT)) then
+			result := object Vorgangsservice {}
+		endif endif;
+	}
+	result.name := self.name;
+	*/
+}
+ 
+ 
