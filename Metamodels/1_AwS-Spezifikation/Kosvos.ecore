@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="kosvos" nsURI="http://www.uniba.de/wiai/seda/fha/som/aws/kosvos/Kosvos"
+    nsPrefix="kosvos">
+  <eClassifiers xsi:type="ecore:EClass" name="KosVos">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kos" eType="#//KOS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vos" upperBound="-1" eType="#//VOS"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KOS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objekttypen" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//KOT"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beziehungen" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//Beziehung"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VOS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objekttypen" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//VOT"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beziehungen" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//Interacts_with"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

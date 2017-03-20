@@ -1,0 +1,64 @@
+grammar de.uniba.wiai.seda.fha.swarchitektur.Swdesign with org.eclipse.xtext.common.Terminals
+generate swdesign
+         "http://www.uniba.de/wiai/seda/fha/swarchitektur/Swdesign"
+
+// Design has Modules
+Design: name=ID ("v"version=ID)? modules+=EJBModule*;
+
+// EJBModule has Name, EJBs, Interfaces, Entities
+EJBModule: "EJBModule" name=ID   "{" (ejb+=EJB | interfaces+=BusinessInterface | 
+           entities+=JPAEntity)+ "}";
+
+// Generalisierungsbeziehungen zu EJBs
+EJB: SessionBean | MessageDrivenBean;
+SessionBean: StatelessSessionBean | StatefulSessionBean;
+
+// BusinessInterface has Name, Package, Methodensignaturen	
+BusinessInterface: "BusinessInterface" package=PACKAGE_ID name=ID "{" 
+	 methoden+=Methodensignatur* "}";
+	
+// Methodensignatur has Name, Input/Output-Typen
+Methodensignatur: outputTyp=ID name=ID "(" inputTypen+=ID?
+        ("," inputTypen+=ID)* ")" ";";
+
+// Methode has Name, Input/Output-Typen, Invokes
+Methode: outputTyp=ID name=ID "(" inputTypen+=ID?
+	 ("," inputTypen+=ID)* ")" "{" invoke+=Invoke* "}"; 
+	
+// Generalisierungsbeziehungen zu Invokes
+Invoke: InvokeEJBSync | InvokeQueueAsync;
+
+// InvokeEJBSync has EJB, Methodensignatur, Parameter-Typen
+InvokeEJBSync: ejb=[SessionBean]"."methodensignatur=[Methodensignatur] "("  
+       parameterTypen+=ID? ("," parameterTypen+=ID)* ")" ";";
+
+// InvokeQueueAsync has Queue-Name, Nachrichten-Typen
+InvokeQueueAsync: "queueMessage" "(" queueName=[MessageQueue]
+	("," nachrichtenTypen+=ID)+ ")" ";";
+
+// StatefulSessionBean hase Name, Package, Attribute, Methoden
+StatefulSessionBean: "StatefulSessionBean" package=PACKAGE_ID name=ID "{" 
+	attribute+=Attribut* methode+=Methode* "}";
+
+// StatelessSessionBean has Name, Package, Attribute, Methoden
+StatelessSessionBean: "StatelessSessionBean" package=PACKAGE_ID name=ID "{" 
+	attribute+=Attribut* methode+=Methode* "}";
+
+// MessageDrivenBean has Name, Package, Message Queue, Attribute, Methoden
+MessageDrivenBean: "MessageDrivenBean" package=PACKAGE_ID name=ID 
+       queue=MessageQueue "{" attribute+=Attribut* methode+=Methode* "}";
+
+// MessageQueue has Name, Nachrichten Typen
+MessageQueue: "JMSQueue" name=ID nachrichtenTypen+=ID;
+
+// JPAEntity has Name, Attribute, Methoden
+JPAEntity: "JPAEntity" package=PACKAGE_ID name=ID "{" 
+       attribute+=Attribut* methode+=Methode* "}";
+	
+// Attribut has Typ, Name
+Attribut: typ=ID name=ID ";"; 
+
+terminal PACKAGE_ID: '^'? ('a'..'z'|'_') ('a'..'z'|'_'|'0'..'9'|'.')*;
+
+
+

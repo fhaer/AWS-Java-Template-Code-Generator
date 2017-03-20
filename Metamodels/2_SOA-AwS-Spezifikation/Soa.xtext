@@ -1,0 +1,53 @@
+grammar de.uniba.wiai.seda.fha.som.aws.soa.Soa with de.uniba.wiai.seda.fha.som.aws.kosvos.Kosvos
+
+import "http://www.uniba.de/wiai/seda/fha/som/aws/Aws" as aws
+import "http://www.uniba.de/wiai/seda/fha/som/aws/kosvos/Kosvos" as kosvos
+
+generate soa "http://www.uniba.de/wiai/seda/fha/som/aws/soa/Soa"
+
+// SoaAws has KosVos, Vorgangs-Services, Entitaets-Services
+SoaAws: aws=KosVos (vorgangsServices+=VorgangsServiceNichtElementar | 
+	                entitaetsServices+=EntitaetsService)+;
+
+// Generalisierung der Service-Klassen
+Service: EntitaetsService | VorgangsService;
+VorgangsService: VorgangsServiceNichtElementar | VorgangsServiceElementar;
+
+// EntitaetsService has Name, Interface, Entitäten
+EntitaetsService: "EntitaetsService" name=ID "{" interface=Interface entitaeten+=Entitaet+ "}";
+// Entität has KOT
+Entitaet: "KOT" kot=[aws::KOT]";";
+
+// VorgangsServiceNichtElementar has Name, Interface, Komposition, Workflow (Choreo./Orchestr.)
+VorgangsServiceNichtElementar: "VorgangsService" name=ID "{" interface=Interface 
+	komposition+=VorgangsServiceElementar* 
+	("Workflow" "{" (vsChoreografie+=Choreografie |
+                     vsOrchestrierung+=Orchestrierung)* "}")*
+	"}";
+
+// VorgangsServiceElementar has Name, Interface, Orchestr., VOTs
+VorgangsServiceElementar: "VorgangsService" name=ID "{" 
+	  interface=Interface 
+	  (esOrchestrierung+=EntitaetsServiceOrchestrierung)*
+	  "VOT" votRequest=[aws::VOT]";" ("VOT" votResponse=[aws::VOT]";")?
+	  "}";
+
+// Interface has Name, Methoden
+Interface: name="Interface" "{" methoden+=ServiceMethode+ "}";
+
+// Service_Methode has Name, Input/Output-Parameter
+ServiceMethode: outParam=ID? name=ID "("inParam+=ID*")"";";
+
+// Generalisierung der Service-Beziehungen zur Choreografie und Orchestrierung  
+ServiceBeziehung: Choreografie | Orchestrierung;
+Orchestrierung: VorgangsServiceOrchestrierung | EntitaetsServiceOrchestrierung;
+
+// Service-Beziehungen mit aufrudender Methode (serviceMethode1) auf aufgerufener Methode (serviceMethode2)
+Choreografie:
+  serviceMethode1=[ServiceMethode] ">>" service=[Service]"."serviceMethode2=[ServiceMethode]";";
+
+VorgangsServiceOrchestrierung: 
+  serviceMethode1=[ServiceMethode] "->" (service=[Service]".")?serviceMethode2=[ServiceMethode]";";
+EntitaetsServiceOrchestrierung: 
+  "EntitaetsService" (serviceMethode1=[ServiceMethode] "->")? service=[Service]("."serviceMethode2=[ServiceMethode])?";";
+

@@ -1,0 +1,39 @@
+grammar de.uniba.wiai.seda.fha.som.aws.Aws with org.eclipse.xtext.common.Terminals
+
+generate aws "http://www.uniba.de/wiai/seda/fha/som/aws/Aws"
+
+Aws: (objekttypen+=Objekttyp | beziehungen+=Beziehung)*; // Aws has Objekttypen, Beziehungen
+	
+Objekttyp: KOT | VOT; // KOT/VOT is_a Objekttyp
+KOT: OOT | TOT | LOT; // OOT/TOT/LOT is_a KOT
+
+// OOT/TOT/LOT/VOT has Attribute, Operatoren
+OOT: "OOT" name=ID "{" (attribute+=Attribut | operatoren+=Operator)* "}";
+TOT: "TOT" name=ID "{" (attribute+=Attribut | operatoren+=Operator)* "}";
+LOT: "LOT" name=ID "{" (attribute+=Attribut | operatoren+=Operator)* "}";
+VOT: "VOT" name=ID "{" (attribute+=Attribut | operatoren+=Operator)* "}";
+
+Attribut: name=ID ";";                                   // Attribut has Name
+Operator: (outParam=ID)? name=ID "("inParam+=ID*")"";";  // Operator has outParam, Name, inParam
+
+// Interacts_with/Is_a/Is_part_of is_a Beziehung
+Beziehung: Interacts_with | Is_a | Is_part_of;
+
+// Interacts_with/Is_a/Is_part_of has Objekttyp1, Kardinalitaet, Objekttyp2
+Interacts_with: "interacts_with:"? objekttyp1=[Objekttyp] 
+	kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp] ";";
+Is_a: "is_a:" objekttyp1=[Objekttyp] 
+	kardinalitaet=(Kardinalitaet01 | Kardinalitaet11) objekttyp2=[Objekttyp] ";";
+Is_part_of: "is_part_of:" objekttyp1=[Objekttyp] 
+	kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp] ";";
+
+// Kardinalitaet-(0,1)/(0,*)/(1,1)/(1,*) is_a Kardinalitaet
+Kardinalitaet: Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet11 | Kardinalitaet1x;
+
+Kardinalitaet01: ("--" | "(0,1)") {Kardinalitaet01};
+Kardinalitaet0x: ("->" | "(0,*)") {Kardinalitaet0x};
+Kardinalitaet11: ("==" | "(1,1)") {Kardinalitaet11};
+Kardinalitaet1x: ("=>" | "(1,*)") {Kardinalitaet1x};
+
+terminal ID: '^'? ('a'..'z'|'A'..'Z'|'_'|'<'|'>') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'<'|'>')*;
+

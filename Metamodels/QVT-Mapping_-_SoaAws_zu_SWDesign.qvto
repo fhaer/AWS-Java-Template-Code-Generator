@@ -1,0 +1,484 @@
+/**
+ * -------------------------------------------------------------------------
+ * QVTo-Spezifikation der Zuornungsbeziehung SOA-AwS -> Software-Design
+ * -------------------------------------------------------------------------
+ * 
+ * Gliederung:
+ *   1. Import und Definition von Quell- und Ziel-Metamodellen
+ *   2. Allgemeinen Funktionen für die Transformation von Vorgangs- und Entitäs-Services
+ *   3. Funktionen zur Transformation von Entitäts-Services
+ *   4. Funktionen zur Transformation von Vorgangs-Services
+ *      4.1 Funktionen zur Transformation nicht-elementarer Vorgangs-Services
+ *      4.2 Funktionen zur Transformation elementarer Vorgangs-Services
+ */
+
+
+/**
+ * ---------------------------------------------------------
+ * 1. Import und Definition von Quell- und Ziel-Metamodellen
+ * ---------------------------------------------------------
+ */
+
+// Import von verwendeten Metamodellen
+modeltype aws 
+uses aws('http://www.uniba.de/wiai/seda/fha/som/aws/Aws');
+
+modeltype kosvos 
+uses kosvos('http://www.uniba.de/wiai/seda/fha/som/aws/kosvos/Kosvos');
+
+modeltype soaaws 
+uses soa('http://www.uniba.de/wiai/seda/fha/som/aws/soa/Soa');
+
+modeltype swdesign "strict" 
+uses swdesign('http://www.uniba.de/wiai/seda/fha/swarchitektur/Swdesign');
+
+// Definition von Quell- und Ziel-Metamodell
+transformation SoaAwS_SWDesign(in source : soaaws, out target : swdesign);
+
+
+/**
+ * -----------------------------------------------------------------------------------
+ * 2. Allgemeinen Funktionen für die Transformation von Vorgangs- und Entitäs-Services
+ * -----------------------------------------------------------------------------------
+ */
+
+// Einsprungspunkt: Aufruf der Transformation SoaAws -> Design
+main() {
+	source.rootObjects()[SoaAws] -> map design();
+}
+
+// Zuordnungsfunktion SoaAws -> Design der Software
+mapping SoaAws::design() : Design {
+	result.name := self.aws.name;
+	log("Transformation von Entitaets-Services");
+	result.modules += self.entitaetsServices -> map ejbModule();
+	log("Transformation von Vorgangs-Services");
+	result.modules += self.vorgangsServices -> map ejbModule();
+}
+ 
+/*
+ * Zuordnungsfunktion Service -> EJB:
+ * Die Zuordnungsfunktion wird unter Gliederungspunkt 2. und 3. für alle
+ * Subklassen von Service erweitert.
+ */ 
+mapping Service::ejb(package:String) : EJB {
+	result.name := self.name; 
+	result.package := package;
+	if (self.oclIsKindOf(VorgangsServiceElementar)) then {
+		// name an Paketbezeichner es (nicht-elementaren) Vorgangs-Service anhängen
+		result.package := package + "." + name;
+	} endif;
+}
+
+// Zuordnungsfunktion Interface -> Business-Interface
+mapping Interface::businessInterface(name:String, package:String) : BusinessInterface {
+	log("    Interface -> Business Interface: " + name);
+	result.name := name;
+	result.package := package;
+	result.methoden += self.methoden -> map methodensignatur();
+}
+
+// Zuordnungsfunktion Service-Methode -> Methode des SW-Designs
+mapping ServiceMethode::methode() : Methode {
+	result.name := self.name;
+	result.outputTyp := self.outParam.firstToUpper();
+	self.inParam -> forEach(parameter) {
+		result.inputTypen += parameter.firstToUpper();
+	};
+	// Methode in EJB aufrufen
+	result.invoke += invokeEjbSync(self);
+}
+
+// Zuordnungsfunktion Service-Methode -> Methodensignatur des SW-Designs
+mapping ServiceMethode::methodensignatur() : Methodensignatur {
+	result.name := self.name;
+	result.outputTyp := self.outParam.firstToUpper();
+	self.inParam -> forEach(parameter) {
+		result.inputTypen += parameter.firstToUpper();
+	}
+}
+
+/*
+ * Hilfsfunktion zur Erstellung eines Attributs für den Zugriff auf einen Service.
+ */
+helper attributService(service:Service) : swdesign::Attribut {
+	var attribut := object swdesign::Attribut {
+		name := service.name;
+		// Typ = Name: Typ-Zuweisung erfolgt auf Ebene des Software-Designs
+		typ := service.name.firstToUpper();
+	};
+	return attribut;
+}
+
+// Zuordnungsfunktion Attribut -> Attribut des SW-Designs
+mapping Attribut::attribut() : swdesign::Attribut {
+	result.name := self.name;
+	// Typ = Name: Typ-Zuweisung erfolgt auf Ebene des Software-Designs
+	result.typ := self.name.firstToUpper();
+}
+
+// Zuordnungsfunktion Operator -> Methode des SW-Designs
+mapping Operator::methode() : Methode {
+	result.name := self.name;
+	result.outputTyp := self.outParam.firstToUpper();
+	self.inParam -> forEach(parameter) {
+		result.inputTypen += parameter.firstToUpper();
+	}
+}
+
+/**
+ * ------------------------------------------------------
+ * 3. Funktionen zur Transformation von Entitäts-Services
+ * ------------------------------------------------------
+ */
+ 
+// Zuordnungsfunktion Entitaets-Service -> EJB-Module
+mapping EntitaetsService::ejbModule() : EJBModule {
+    log("  Entitaets-Service: " + self.name);
+	log("    Entitaets-Service -> EJB-Module: " + self.name);
+	result.name := "EntitaetsService_" + self.name;
+	var package := "entitaetsservices." + self.name.toLowerCase();
+	result.interfaces += self.interface -> map businessInterface(self.name, "entitaetsservices");
+	result.entities += self.entitaeten -> map jpaEntity(package);
+	result.ejb += self -> map statelessSessionBean(package);
+}
+
+// Zuordnungsfunktion Entitaet -> JPA-Entity
+mapping Entitaet::jpaEntity(package:String) : JPAEntity {
+	log("    Entität -> JPA-Entity: " + self.kot.name);
+	result.name := self.kot.name;
+	result.package := package + ".entitaeten";
+	result.attribute += self.kot.attribute -> map attribut();
+	result.methode += self.kot.operatoren -> map methode();
+}
+
+/*
+ * Zuordnungsfunktion Entitaets-Service -> Stateless Session Bean:
+ * erbt von der Zuordnungsfunktion Service -> EJB
+ */
+mapping EntitaetsService::statelessSessionBean(package:String) : StatelessSessionBean 
+inherits Service::ejb {
+	log("    Entitäts-Service -> Stateless Session Bean: " + self.name);
+	// Entitäts-Service implementiert Interface-Methoden
+	result.methode += self.interface.methoden -> map methode();
+}
+
+
+/**
+ * ------------------------------------------------------
+ * 4. Funktionen zur Transformation von Vorgangs-Services
+ * ------------------------------------------------------
+ */
+ 
+/*
+ * Zuordnungsfunktion Vorgangs-Service -> EJB-Module:
+ * Erstellt ein Interface und ruft Zuordnungsfunktion für nicht-elementare 
+ * Vorgangs-Services auf.
+ */
+mapping VorgangsServiceNichtElementar::ejbModule() : EJBModule {
+	log("  Vorgangs-Service: " + self.name);
+	log("    Vorgangs-Service -> EJB-Module: " + self.name);
+	result.name := "VorgangsService_" + self.name;
+	var package := "vorgangsservices." + self.name.toLowerCase();
+	result.interfaces += self.interface -> map businessInterface(self.name, "vorgangsservices");
+	log("    Transformation elementarer Vorgangs-Services");
+	self.komposition -> forEach (vorgServiceElem) {
+		log("      Vorgangs-Service: " + vorgServiceElem.name);
+		result.interfaces += vorgServiceElem.interface -> map businessInterface(vorgServiceElem, package);
+		result.ejb += vorgServiceElem -> map statelessSessionBean(package);
+	};
+	result.ejb += self -> map messageDrivenBean(package);
+	result.ejb += self -> map statefulSessionBean(package);
+}
+
+/**
+ * ---------------------------------------------------------------------
+ * 4.1 Funktionen zur Transformation nicht-elementarer Vorgangs-Services
+ * ---------------------------------------------------------------------
+ */
+
+// Zuordnungsfunktion: Vorgangs-Service (n. elem.) -> Message Driven Bean
+mapping VorgangsServiceNichtElementar::messageDrivenBean(package:String) : MessageDrivenBean
+inherits Service::ejb {
+	log("    Vorgangs-Service -> Message Driven Bean: " + self.name);
+	result.methode += self.interface.methoden -> map _methode();
+	// Message Queue erstellen
+	result.queue := self -> map messageQueue()![MessageQueue];
+	// Attribut zum Zugriff auf den Vorgangs-Service erstellen
+	result.attribute += attributService(self);
+}
+
+// Zuordnungsfunktion: Vorgangs-Service (n. elem.) -> Message Queue
+mapping VorgangsServiceNichtElementar::messageQueue() : MessageQueue {
+	result.name := self.name.firstToUpper() + "_Queue";
+	// Nachrichten-Typen für jeden Input-Paramter aller Service-Methoden erstellen
+	self.interface.methoden[ServiceMethode] -> inParam -> forEach(parameter) {
+		result.nachrichtenTypen += parameter.firstToUpper();
+	};
+}
+
+/*
+ * Zuordnungsfunktion Vorgangs-Service (n. elem.) -> Stateful Session Bean:
+ * erbt von der Zuordnungsfunktion Service -> EJB
+ */
+mapping VorgangsServiceNichtElementar::statefulSessionBean(package:String) : StatefulSessionBean 
+inherits Service::ejb {
+	log("    Vorgangs-Service -> Stateful Session Bean: " + self.name);
+	
+	// implementiert Interface-Methoden
+	result.methode += self.interface.methoden -> map methode();   
+	
+	// Referenzen für orchestrierte Vorgangs-Services
+	result.attribute += attributeOrchestrierteServices(self);
+	// Referenz auf die Message Driven Bean
+	result.attribute += attributMessageDrivenBean(self);
+	
+	// verknüpfe Methoden der Service-Beziehungen mit Service-Methoden
+	self.vsChoreografie -> forEach(beziehung) {
+		// suche bereits transformierte Methode
+		var methode1 := queryMethodeInBean(beziehung.serviceMethode1, result);
+		if (methode1 = null) then {
+			// erstelle Methode mit Aufrufen, falls sie nicht existiert
+			methode1 := beziehung.serviceMethode1 -> map methode()![Methode];
+			result.methode += methode1;
+		} endif;
+		/*
+		 * Zuweisung eines Aufrufs einer Service-Beziehung "Methode1 -> Methode2":
+		 * Methode 1 ruft Methode 2 auf.
+		 */
+		methode1.invoke += beziehung -> map invokeQueueAsync();
+	};
+	
+	// verknüpfe Methoden der Service-Beziehungen mit Service-Methoden
+	self.vsOrchestrierung -> forEach(beziehung) {
+		// suche bereits transformierte Methoden
+		var methode1 := queryMethodeInBean(beziehung.serviceMethode1, result);
+		var methode2 := queryMethodeInBean(beziehung.serviceMethode2, result);
+		if (methode1 = null) then {
+			// erstelle Methode mit Aufrufen, falls sie nicht existiert
+			methode1 := beziehung.serviceMethode1 -> map methode()![Methode];
+			result.methode += methode1;
+		} endif;		
+		if (methode2 = null) then {
+			// erstelle Methode mit Aufrufen, falls sie nicht existiert
+			methode2 := beziehung.serviceMethode2 -> map methode()![Methode];
+			result.methode += methode2;
+		} endif;
+		/*
+		 * Zuweisung eines Aufrufs einer Service-Beziehung "Methode1 -> Methode2":
+		 * Methode 1 ruft Methode 2 auf.
+		 */
+		methode1.invoke += beziehung -> map invokeEjbSync();
+	};
+}
+
+// Zuordnungsfunktion Orchestr. -> Invoke eines EJB (synchron)
+mapping Orchestrierung::invokeEjbSync() : InvokeEJBSync {
+	/* 
+	 * Nach Ausführung der serviceMethode1 einer Service-Beziehung wird 
+     * serviceMethode2 aufgerufen. Für den Aufruf wird die bereits 
+     * transformierte Methodensignatur gesucht (resolve) und im 
+     * InvokeEJBSync zusammen mit den Typen der Parameter hinterlegt. 
+	 */
+	var vorgangsService := self.container()![VorgangsServiceNichtElementar];
+	var methode = queryMethodeInVorgangsService(vorgangsService, self.serviceMethode2);
+	var signatur := methode.resolve()![Methodensignatur];
+	result.ejb := queryStatefulSessionBean(vorgangsService.name);
+	//vorgangsService.interface.resolve()![BusinessInterface];
+	result.methodensignatur := signatur;
+	result.parameterTypen := signatur[Methodensignatur].inputTypen;
+}
+
+// Zuordnungsfunktion Choreo. -> Invoke einesr Queue (asynchron)
+mapping Choreografie::invokeQueueAsync() : InvokeQueueAsync {
+	result.queueName := self.service![VorgangsServiceNichtElementar] -> map messageQueue()![MessageQueue];
+	self.serviceMethode2.inParam -> forEach(parameter) {
+		result.nachrichtenTypen += parameter;
+	}
+}
+
+// Zuordnungsfunktion Service-Methode -> Methode der SW-Designs
+mapping ServiceMethode::_methode() : Methode {
+	init { }
+	result.name := self.name;
+	result.outputTyp := self.outParam.firstToUpper();
+	self.inParam -> forEach(parameter) {
+		result.inputTypen += parameter.firstToUpper();
+	};
+	// Methode in EJB aufrufen
+	result.invoke += invokeEjbSync(self);
+}
+
+/*
+ * Hilfsfunktion zur Erstellung von Attributen orchestrierter Services
+ */
+helper attributeOrchestrierteServices(service:VorgangsServiceNichtElementar) : Set(swdesign::Attribut) {
+	var attribute : Set(swdesign::Attribut);
+	service.komposition -> forEach(serviceElementar) {
+	 	attribute += object swdesign::Attribut {
+			name := serviceElementar.name;
+			// Typ = Name: Typ-Zuweisung erfolgt auf Ebene der Software-Designs
+			typ := serviceElementar.name.firstToUpper();
+		};
+	};
+	return attribute;
+}
+
+/*
+ * Hilfsfunktion zur Erstellung eines Attributs auf eine Message Driven Bean
+ */
+helper attributMessageDrivenBean(service:VorgangsServiceNichtElementar) : swdesign::Attribut {
+	var attribut := object swdesign::Attribut {
+		// Konvention: Attribut für MDB-Name = _messageDrivenBean
+		name := "messageDrivenBean";
+		typ := service.name.firstToUpper() + "_MDB";
+	};
+	return attribut;
+}
+
+/*
+ * Hilfsfunktion zur Erstellung eines Methodenaufrufs für Vorgangs-Services. 
+ * Der zurückgegebene Aufruf ruft die übergebene Methode auf.
+ * Rückgabe: Invoke auf die übergebene Methode oder null, falls keine Vorgangs-Service
+ */
+helper invokeEjbSync(methode:ServiceMethode) : InvokeEJBSync {
+	// Service, in dem die Methode enthalten ist
+	var service := methode.container().container();
+	if (service.oclIsKindOf(VorgangsService)) then {
+		// Suche Methode in übergebenem Service
+		var methodeVSElem := queryMethodeInVorgangsService(service![VorgangsService], methode);
+		// erstelle einen Aufruf auf die Methode im elementaren Vorgangs-Service
+		return object InvokeEJBSync {
+			// ermittle bereits transformierte Methodensignatur und Session Bean
+			methodensignatur := methodeVSElem.resolve()![Methodensignatur];
+			ejb := methodeVSElem.container().container().resolve()![StatelessSessionBean];
+			parameterTypen += methodensignatur[Methodensignatur].inputTypen;
+		};
+	} endif;
+	return null;
+}
+
+/* 
+ * Query: Sucht die transformierte Methode zur übergebenen Service-Methode 
+ * einer Sesssion Bean.
+ * Rückgabe: Methode mit übergebenem Namen oder null (falls nicht gefunden)
+ */  
+query queryMethodeInBean(methode:ServiceMethode, bean:SessionBean) : Methode {
+	var name := methode.name;
+	bean.methode[Methode] -> forEach(m) {
+		if (m.name.equalsIgnoreCase(methode.name)) then {
+			return m;
+		} endif;	
+	};
+	return null;
+}
+
+/**
+ * 4.2 Funktionen zur Transformation elementarer Vorgangs-Services
+ */
+
+// Zuordnungsfunktion: Interface eines Vorgangs-Service (elem.) -> BusinessInterface
+mapping Interface::businessInterface(service:VorgangsServiceElementar, package:String) : BusinessInterface
+{
+	var vServiceElemName := service.name;
+	var vServiceElemePackage := package + "." + vServiceElemName;
+	log("        Interface -> Business Interface: " + vServiceElemName);
+	result.name := vServiceElemName;
+	result.package := vServiceElemePackage;
+	result.methoden += self.methoden -> map methodensignatur();
+}
+
+/*
+ * Zuordnungsfunktion Vorgangs-Service (elem.) -> Stateless Session Bean:
+ * erbt von der Zuordnungsfunktion Service -> EJB
+ */
+mapping VorgangsServiceElementar::statelessSessionBean(package:String) : StatelessSessionBean 
+inherits Service::ejb {
+	log("        Vorgangs-Service -> Stateless Session Bean: " + result.name);
+	
+	// erstelle ein Attribut für jeden orchestrierten Entitäts-Service
+	self.esOrchestrierung -> forEach(orch) {
+		// suche nach existierendem Attribut
+		if ( queryAttributInBean(orch.service, result) = null ) then {
+			// erstelle Attribut, falls es nicht existiert
+			result.attribute += attributService(orch.service);
+		} endif
+	};
+	
+	 // VOT: Mapping von Attributen und Operatoren
+	result.attribute += self.votRequest.attribute -> map attribut();
+	result.methode += self.votRequest.operatoren -> map methode();
+	// Mapping für VOT, der den Reponse ausführt
+	// (sofern Input-Output Message Exchange Pattern genutzt wird)
+	if (self.votResponse != null) then {
+		result.attribute += self.votResponse.attribute -> map attribut();
+		result.methode += self.votResponse.operatoren -> map methode();
+	} endif;
+}
+
+// Suche nach einer Stateful Session Bean mit dem übergebenen Namen
+query queryStatefulSessionBean(name:String) : StatefulSessionBean {
+	target.objectsOfType(StatefulSessionBean) -> forEach(bean) {
+		if (bean.name = name) then {
+			return bean;
+		} endif;
+	};
+	return null;
+}
+
+/*
+ * Query: Sucht eine Methode in allen Interfaces, die in dem übergebenem
+ * Vorgangs-Service enthalten sind.
+ * Rückgabe: Methode oder null, falls nicht gefunden
+ */
+query queryMethodeInVorgangsService(service:VorgangsService, methode:ServiceMethode) : ServiceMethode {
+	var interfaces : Set(Interface);
+	// falls nicht-elementarer Service: finde entsprechende Interaces in elementaren Services
+	if (service.oclIsKindOf(VorgangsServiceNichtElementar)) then {
+		var serviceNichtElem := service![VorgangsServiceNichtElementar];
+		interfaces += serviceNichtElem.komposition -> interface;
+	} else {
+		interfaces += service[VorgangsServiceElementar].interface;
+	} endif;
+	// durchsuche Interface(s) nach übergebener Methode
+	interfaces -> methoden -> forEach (m) {
+		if (methode.name = m.name) then {
+			return m;
+		} endif;
+	};
+	return null;
+}
+
+/* 
+ * Query: Sucht das Attribut, mit dem der übergebene Service in einer Session
+ * Bean aufgerufen werden.
+ * Rückgabe: Attribut oder null, falls nicht gefunden
+ */ 
+query queryAttributInBean(service:Service, bean:SessionBean) : swdesign::Attribut {
+	var name := service.name.toLowerCase();
+	bean.attribute[swdesign::Attribut] -> forEach(a) {
+		var serviceName := a.name.toLowerCase();
+		if (serviceName = name) then {
+			return a;
+		} endif;	
+	};
+	return null;
+}
+
+/*
+ * Update einer bereits transfomrierten (SW-Design)-Methode:
+ * Fügt zusätzliche Parameter in die Methode ein.
+ */ 
+mapping inout Methode::updateMethode(serviceMethode:ServiceMethode) {
+	serviceMethode.inParam -> forEach (parameter) {
+		var paramQuery := inputTypen -> select(p | p.equalsIgnoreCase(parameter));
+		if (paramQuery ->isEmpty()) then {
+			inputTypen += parameter.firstToUpper();
+		} endif;
+	}
+}
+
+/**
+ * EOF
+ */
+ 

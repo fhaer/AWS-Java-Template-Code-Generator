@@ -1,0 +1,16 @@
+grammar de.uniba.wiai.seda.fha.som.aws.kosvos.Kosvos with de.uniba.wiai.seda.fha.som.aws.Aws
+
+import "http://www.uniba.de/wiai/seda/fha/som/aws/Aws" as aws
+
+generate kosvos "http://www.uniba.de/wiai/seda/fha/som/aws/kosvos/Kosvos"
+
+// KosVos has (1,1) KOS, (1,*) VOS
+KosVos: "AWS " (name=ID "v"version=VER_NR)? kos=KOS vos+=VOS+;
+	
+// KOS has Objekttypen (KOT), Beziehungen 
+KOS: (name="KOS" | "KOS:" name=ID) "{" (objekttypen+=KOT | beziehungen+=Beziehung)* "}";
+
+// VOS has Objekttypen (VOT), Beziehungen (Interacts_with) 
+VOS: (name="VOS" | "VOS:" name=ID) "{" (objekttypen+=VOT | beziehungen+=Interacts_with)* "}";
+
+terminal VER_NR: ('0'..'9')+'.'('0'..'9')+;

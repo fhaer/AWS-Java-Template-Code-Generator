@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="soa" nsURI="http://www.uniba.de/wiai/seda/fha/som/aws/soa/Soa"
+    nsPrefix="soa">
+  <eClassifiers xsi:type="ecore:EClass" name="SoaAws">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aws" eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws.kosvos/src-gen/de/uniba/wiai/seda/fha/som/aws/kosvos/Kosvos.ecore#//KosVos"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vorgangsServices" upperBound="-1"
+        eType="#//VorgangsServiceNichtElementar" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entitaetsServices" upperBound="-1"
+        eType="#//EntitaetsService" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Service">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VorgangsService" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitaetsService" eSuperTypes="#//Service">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entitaeten" upperBound="-1"
+        eType="#//Entitaet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entitaet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kot" eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//KOT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VorgangsServiceNichtElementar" eSuperTypes="#//VorgangsService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="komposition" upperBound="-1"
+        eType="#//VorgangsServiceElementar" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vsChoreografie" upperBound="-1"
+        eType="#//Choreografie" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vsOrchestrierung" upperBound="-1"
+        eType="#//Orchestrierung" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VorgangsServiceElementar" eSuperTypes="#//VorgangsService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="esOrchestrierung" upperBound="-1"
+        eType="#//EntitaetsServiceOrchestrierung" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="votRequest" eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//VOT"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="votResponse" eType="ecore:EClass ../../../../../../../../../../de.uniba.wiai.seda.fha.som.aws/src-gen/de/uniba/wiai/seda/fha/som/aws/Aws.ecore#//VOT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methoden" upperBound="-1"
+        eType="#//ServiceMethode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceMethode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outParam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inParam" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceBeziehung">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceMethode1" eType="#//ServiceMethode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="service" eType="#//Service"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceMethode2" eType="#//ServiceMethode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Orchestrierung" eSuperTypes="#//ServiceBeziehung"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Choreografie" eSuperTypes="#//ServiceBeziehung"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VorgangsServiceOrchestrierung" eSuperTypes="#//Orchestrierung"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitaetsServiceOrchestrierung" eSuperTypes="#//Orchestrierung"/>
+</ecore:EPackage>
