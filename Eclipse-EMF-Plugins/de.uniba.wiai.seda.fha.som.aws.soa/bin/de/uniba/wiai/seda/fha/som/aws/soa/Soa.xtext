@@ -1,0 +1,49 @@
+grammar de.uniba.wiai.seda.fha.som.aws.soa.Soa with de.uniba.wiai.seda.fha.som.aws.Aws
+
+import "http://www.uniba.de/wiai/seda/fha/som/aws/Aws" as aws
+
+generate soa "http://www.uniba.de/wiai/seda/fha/som/aws/soa/Soa"
+
+SOA_AwS:
+	"SOA-AwS:" name=ID ("v"version=VERSION_NUMBER)?
+	(vos=VOS & kos=KOS)
+	(vorgangsservices+=Vorgangsservice | entityservices+=Entityservice)*;
+
+Service:
+	Vorgangsservice | Entityservice | VorgangsserviceElementar;
+
+Vorgangsservice:
+	"Vorgangsservice" name=ID "{"
+	 choreographieIF=Interface vorgangsservicesElementar+=VorgangsserviceElementar* workflow=Workflow
+	 "}";
+
+VorgangsserviceElementar:
+	 name=ID "VOT" komponentenObjekttyp=[aws::VOT] interface=Interface;
+
+Interface:
+	name="Interface" "{" methoden+=ServiceMethode+ "}";
+
+ServiceMethode:
+	name=ID "("parameter+=ID*")"";";
+
+Workflow:
+	"Workflow" "{" (orchestrierung+=Orchestrierung | choreographie+=ChoreographieLokal)+ "}";
+
+Orchestrierung:
+	("("bedingung=Bedingung")")? methode1=[ServiceMethode] "->" methode2=[ServiceMethode]";";
+	
+ChoreographieLokal:
+	("("bedingung=Bedingung")")? methode1=[ServiceMethode] "->" service2=[Service]"."methode2=[ServiceMethode]";";
+	
+Bedingung:
+	bedingung=ID;
+
+Entityservice:
+	"Entityservice" name=ID "{"
+	interface=Interface entities+=Entity*
+	"}";
+
+Entity:
+	name=ID "KOT" komponentenObjekttyp=[aws::KOT] interface=Interface?;
+
+	

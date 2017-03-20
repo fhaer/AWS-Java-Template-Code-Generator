@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uniba.wiai.seda.somsl/src-gen" editDirectory="/de.uniba.wiai.seda.somsl.edit/src"
+    editorDirectory="/de.uniba.wiai.seda.somsl.editor/src" modelPluginID="de.uniba.wiai.seda.somsl"
+    forceOverwrite="true" modelName="SomSL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.uniba.wiai.seda.somsl.edit"
+    editorPluginID="de.uniba.wiai.seda.somsl.editor" runtimeVersion="2.9">
+  <genPackages prefix="SomSL" basePackage="de.uniba.wiai.seda.somsl" disposableProviderFactory="true"
+      fileExtensions="somsl" ecorePackage="SomSL.ecore#/">
+    <genClasses ecoreClass="SomSL.ecore#//Metamodell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Metamodell/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Metamodell/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Metamodell/objekttyp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Metamodell/beziehung"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//Objekttyp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Objekttyp/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Objekttyp/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Objekttyp/operatoren"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//Attribut">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SomSL.ecore#//Attribut/objekttyp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Attribut/datentyp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Attribut/name"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//Operator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Operator/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SomSL.ecore#//Operator/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Operator/anweisungen"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//Anweisung">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Anweisung/kontrollstruktur"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Anweisung/bedingung"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Anweisung/bedigteAnweisungen"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SomSL.ecore#//Anweisung/objekt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SomSL.ecore#//Anweisung/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//KOT"/>
+    <genClasses ecoreClass="SomSL.ecore#//VOT"/>
+    <genClasses ecoreClass="SomSL.ecore#//OOT"/>
+    <genClasses ecoreClass="SomSL.ecore#//LOT"/>
+    <genClasses ecoreClass="SomSL.ecore#//TOT"/>
+    <genClasses ecoreClass="SomSL.ecore#//Beziehung">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SomSL.ecore#//Beziehung/objekttyp1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SomSL.ecore#//Beziehung/kardinalitaet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SomSL.ecore#//Beziehung/objekttyp2"/>
+    </genClasses>
+    <genClasses ecoreClass="SomSL.ecore#//Interacts_with"/>
+    <genClasses ecoreClass="SomSL.ecore#//Is_a"/>
+    <genClasses ecoreClass="SomSL.ecore#//Is_part_of"/>
+    <genClasses ecoreClass="SomSL.ecore#//Kardinalitaet"/>
+    <genClasses ecoreClass="SomSL.ecore#//Kardinalitaet01"/>
+    <genClasses ecoreClass="SomSL.ecore#//Kardinalitaet0x"/>
+    <genClasses ecoreClass="SomSL.ecore#//Kardinalitaet11"/>
+    <genClasses ecoreClass="SomSL.ecore#//Kardinalitaet1x"/>
+  </genPackages>
+</genmodel:GenModel>

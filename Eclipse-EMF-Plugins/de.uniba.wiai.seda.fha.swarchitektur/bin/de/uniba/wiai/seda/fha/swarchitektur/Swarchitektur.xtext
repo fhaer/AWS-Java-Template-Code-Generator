@@ -1,0 +1,63 @@
+grammar de.uniba.wiai.seda.fha.swarchitektur.Swarchitektur with org.eclipse.xtext.common.Terminals
+
+generate swarchitektur "http://www.uniba.de/wiai/seda/fha/swarchitektur/Swarchitektur"
+
+Architektur:
+	"JavaEEArchitektur:" name=ID ("v"version=ID)?
+	(pakete+=Package*);
+
+Package:
+	"package" name=ID "{" 
+	(komponenten+=EJB | entities+=JPAEntity | pakete+=Package)+
+	"}";
+
+EJB:
+	(SessionBean | MessageDrivenBean | BusinessInterface);
+
+SessionBean:
+	(StatelessSessionBean | StatefulSessionBean | SingletonSessionBean);
+
+	
+BusinessInterface:
+	"BusinessInterface" name=ID "{"
+	methoden+=Methodensignatur*
+	"}";
+	
+Methodensignatur:
+	name=ID "();";
+
+StatefulSessionBean:
+	"StatefulSessionBean" name=ID "{"
+		attribute+=Attribut*
+		methode+=Methode*
+	"}";
+	
+Attribut:
+	typ=ID name=ID ";"; 
+	
+Methode:
+	name=ID "()" "{"
+		aufruf+=Aufruf*
+	"}"; 
+	
+Aufruf:
+	(objekt=ID".")?methode=Methodensignatur;
+
+StatelessSessionBean:
+	"StatelessSessionBean" name=ID "{"
+		methode+=Methode*
+	"}";
+
+JPAEntity:
+	"JPAEntity" name=ID "{"
+		attribute+=Attribut*
+		methode+=Methode*
+	"}";
+
+MessageDrivenBean:
+	"MessageDrivenBean" name=ID "{"
+	"}";
+
+SingletonSessionBean:
+	"SingletonSessionBean" name=ID "{"
+	"}";

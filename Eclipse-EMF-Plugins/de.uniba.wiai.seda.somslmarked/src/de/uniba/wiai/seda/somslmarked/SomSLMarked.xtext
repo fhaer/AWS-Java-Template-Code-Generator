@@ -1,0 +1,94 @@
+grammar de.uniba.wiai.seda.somslmarked.SomSLMarked with de.uniba.wiai.seda.somsl.annotation.Annotation
+
+//import "http://www.uniba.de/wiai/seda/somsl/SomSL"
+import "http://www.uniba.de/wiai/seda/somsl/annotation/Annotation"
+
+generate somSLMarked "http://www.uniba.de/wiai/seda/somslmarked/SomSLMarked"
+
+AwS:
+	"AwS:" name=ID ("v"version=VERSION)?
+	(vos=VOS & kos=KOS);
+	
+Schema:
+	VOS | KOS;
+
+VOS:
+	(name="VOS" | name=ID) "{" 
+	(objekttypen+=VOT | beziehungen+=Interacts_with)*
+	"}";
+	
+KOS:
+	(name="KOS" | name=ID) "{"
+	(objekttypen+=KOT | beziehungen+=Beziehung)*
+	"}";
+	
+Objekttyp:
+	KOT | VOT;
+
+Attribut:
+	(objekttyp=[Objekttyp] | "DT" datentyp=ID) name=ID ";";
+
+Operator:
+	name=ID "(" parameter+=[Objekttyp]* ") {"
+	anweisungen+=Anweisung*
+	"}";
+
+Anweisung:
+	((kontrollstruktur=ID "(" bedingung=Anweisung ") {"
+	bedigteAnweisungen+=Anweisung*
+	"}") | ((objekt=[Objekttyp] ".")? operator=ID));
+
+KOT:
+	OOT | LOT | TOT;
+
+VOT:
+	(annotation=Annotation)? "VOT" name=ID "{"
+	attribute+=Attribut*
+	operatoren+=Operator*
+	"}";
+
+OOT:
+	(annotation=Annotation)? "OOT" name=ID "{"
+	attribute+=Attribut*
+	operatoren+=Operator*
+	"}";
+
+LOT:
+	(annotation=Annotation)? "LOT" name=ID "{"
+	attribute+=Attribut*
+	operatoren+=Operator*
+	"}";
+
+TOT:
+	(annotation=Annotation)? "TOT" name=ID "{"
+	attribute+=Attribut*
+	operatoren+=Operator*
+	"}";
+
+Beziehung:
+	Is_a | Interacts_with | Is_part_of;
+
+Interacts_with:
+	(annotation=Annotation)? "interacts_with:"? objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp];
+
+Is_a:
+	(annotation=Annotation)? "is_a:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet11) objekttyp2=[Objekttyp];
+
+Is_part_of:
+	(annotation=Annotation)? "is_part_of:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x) objekttyp2=[Objekttyp];
+
+Kardinalitaet:
+	Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet11 | Kardinalitaet1x;
+
+Kardinalitaet01:
+	("--" | "(0,1)") {Kardinalitaet01};
+
+Kardinalitaet0x:
+	("->" | "(0,*)") {Kardinalitaet0x};
+
+Kardinalitaet11:
+	("==" | "(1,1)") {Kardinalitaet11};
+
+Kardinalitaet1x:
+	("=>" | "(1,*)") {Kardinalitaet1x};
+

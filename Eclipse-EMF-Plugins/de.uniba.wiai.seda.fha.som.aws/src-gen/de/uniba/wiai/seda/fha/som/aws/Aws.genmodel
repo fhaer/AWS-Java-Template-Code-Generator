@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uniba.wiai.seda.fha.som.aws/src-gen" editDirectory="/de.uniba.wiai.seda.fha.som.aws.edit/src"
+    editorDirectory="/de.uniba.wiai.seda.fha.som.aws.editor/src" modelPluginID="de.uniba.wiai.seda.fha.som.aws"
+    forceOverwrite="true" modelName="Aws" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.uniba.wiai.seda.fha.som.aws.edit"
+    editorPluginID="de.uniba.wiai.seda.fha.som.aws.editor" runtimeVersion="2.9" usedGenPackages="../../../../../../../../../de.uniba.wiai.seda.fha.annotation/src-gen/de/uniba/wiai/seda/fha/annotation/Annotation.genmodel#//annotation">
+  <genPackages prefix="Aws" basePackage="de.uniba.wiai.seda.fha.som.aws" disposableProviderFactory="true"
+      fileExtensions="aws" ecorePackage="Aws.ecore#/">
+    <genClasses ecoreClass="Aws.ecore#//AwS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//AwS/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//AwS/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//AwS/kos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//AwS/vos"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//Schema">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//Schema/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Schema/beziehungen"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//VOS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//VOS/objekttypen"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//VOS/gliederung"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//KOS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//KOS/objekttypen"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//KOS/gliederung"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//Objekttyp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Objekttyp/annotation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//Objekttyp/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Objekttyp/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Objekttyp/operatoren"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//VOT"/>
+    <genClasses ecoreClass="Aws.ecore#//KOT"/>
+    <genClasses ecoreClass="Aws.ecore#//OOT"/>
+    <genClasses ecoreClass="Aws.ecore#//LOT"/>
+    <genClasses ecoreClass="Aws.ecore#//TOT"/>
+    <genClasses ecoreClass="Aws.ecore#//Attribut">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Aws.ecore#//Attribut/typ"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//Attribut/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//Operator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Aws.ecore#//Operator/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Aws.ecore#//Operator/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//Beziehung">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Beziehung/annotation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Aws.ecore#//Beziehung/objekttyp1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Aws.ecore#//Beziehung/kardinalitaet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Aws.ecore#//Beziehung/objekttyp2"/>
+    </genClasses>
+    <genClasses ecoreClass="Aws.ecore#//Interacts_with"/>
+    <genClasses ecoreClass="Aws.ecore#//Is_a"/>
+    <genClasses ecoreClass="Aws.ecore#//Is_part_of"/>
+    <genClasses ecoreClass="Aws.ecore#//Kardinalitaet"/>
+    <genClasses ecoreClass="Aws.ecore#//Kardinalitaet01"/>
+    <genClasses ecoreClass="Aws.ecore#//Kardinalitaet0x"/>
+    <genClasses ecoreClass="Aws.ecore#//Kardinalitaet11"/>
+    <genClasses ecoreClass="Aws.ecore#//Kardinalitaet1x"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,26 @@
+grammar de.uniba.wiai.seda.fha.annotation.Annotation with org.eclipse.xtext.common.Terminals
+
+generate annotation "http://www.uniba.de/wiai/seda/fha/annotation/Annotation"
+
+Annotation:
+	Name | Ignore | Merge | Version;
+	
+Name:
+	"@name" name=ID;
+
+Merge:
+	"@merge" name=ID; 
+	
+Ignore:
+	"@ignore" {Ignore};
+
+Version:
+	"@version" version=VERSION_NUMBER;
+	
+terminal ID:
+	'^'?('a'..'z'|'A'..'Z'|'_'|'<'|'>') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'<'|'>')*;
+		
+terminal VERSION_NUMBER:
+	('0'..'9')+'.'('0'..'9')+;
+	
+		

@@ -1,0 +1,75 @@
+grammar de.uniba.wiai.seda.somsl.SomSL with org.eclipse.xtext.common.Terminals
+
+generate somSL "http://www.uniba.de/wiai/seda/somsl/SomSL"
+
+Metamodell:
+	name=ID version=ID
+	(objekttyp+=Objekttyp | beziehung+=Beziehung)*;
+
+Objekttyp:
+	ANNOTATION?
+	(KOT | VOT) name=ID "{"
+	attribute+=Attribut*
+	operatoren+=Operator*
+	"}";
+
+Attribut:
+	(objekttyp=[Objekttyp] | "DT" datentyp=ID) name=ID ";";
+
+Operator:
+	name=ID "(" parameter+=[Objekttyp]* ") {"
+	anweisungen+=Anweisung*
+	"}";
+
+Anweisung:
+	(kontrollstruktur=ID "(" bedingung=Anweisung ") {"
+	bedigteAnweisungen+=Anweisung*
+	"}") | ((objekt=[Objekttyp] ".")? operator=ID);
+	
+KOT:
+	OOT | LOT | TOT;
+
+VOT:
+	"VOT" {VOT};
+
+OOT:
+	"OOT" {OOT};
+
+LOT:
+	"LOT" {LOT};
+
+TOT:
+	"TOT" {TOT};
+
+Beziehung:
+	ANNOTATION?
+	(Is_a | Interacts_with | Is_part_of);
+
+Interacts_with:
+	"interacts_with:"? objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x)
+	objekttyp2=[Objekttyp];
+
+Is_a:
+	"is_a:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet11) objekttyp2=[Objekttyp];
+
+Is_part_of:
+	"is_part_of:" objekttyp1=[Objekttyp] kardinalitaet=(Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet1x)
+	objekttyp2=[Objekttyp];
+
+Kardinalitaet:
+	Kardinalitaet01 | Kardinalitaet0x | Kardinalitaet11 | Kardinalitaet1x;
+
+Kardinalitaet01:
+	("(0,1)" | "--") {Kardinalitaet01};
+
+Kardinalitaet0x:
+	("(0,*)" | "->") {Kardinalitaet0x};
+
+Kardinalitaet11:
+	("(1,1)" | "==") {Kardinalitaet11};
+
+Kardinalitaet1x:
+	("(1,*)" | "=>") {Kardinalitaet1x};
+	
+terminal ANNOTATION : '@' !('\n'|'\r')* ('\r'? '\n')? ;
+

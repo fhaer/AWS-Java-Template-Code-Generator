@@ -1,0 +1,35 @@
+modeltype Ecore "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
+modeltype SOM uses myDsl('http://www.xtext.org/example/mydsl/MyDsl');
+	
+
+transformation NewTransformation(in source : SOM, out target : Ecore);
+
+main() {
+	source.objects()[Model] -> X2EPackage();
+}
+
+mapping Model :: X2EPackage() : EPackage 
+{ 
+	result.name := "myPackage" + self.toString().substringAfter("@");
+	result.nsPrefix := "myPackage" + self.toString().substringAfter("@");
+	result.nsURI := "http://servicemodel/1.0";
+	eClassifiers += self.greetings -> select(a | a.oclIsKindOf(Greeting))[Greeting] -> map defGreeting2EClass(); 
+	//end { 
+	//	-- nachdem alle EClasses angelegt wurden, kann man die Referenzen setzen 
+	//	result.eClassifiers -> forEach (eClassifier | eClassifier.oclIsKindOf(EClass)) { 
+	//		map createReferences(eClassifier.oclAsType(EClass)); 
+	//	} 
+	//} 
+} 
+
+mapping Greeting :: defGreeting2EClass() : EClass
+{
+	result.name := "myGreetingEclass" + self.toString().substringAfter("@").substringBefore(" ");
+}
+
+mapping createReferences(inout eClass : EClass) { 
+	//eClass.eStructuralFeatures := EClass.allInstances() -> select(a : EClass | 
+	//a.name = eClass.name) -> ownedAttribute -> map Property2EReferences(); 
+} 
+ 
+ 

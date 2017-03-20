@@ -1,0 +1,41 @@
+modeltype Ecore "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
+modeltype SOM uses defaultname('http://defaultname/1.0');
+	
+
+transformation NewTransformation(in source : SOM, out target : Ecore);
+
+main() {
+	source.objects()[Container] -> X2EPackage();
+}
+
+mapping Container :: X2EPackage() : EPackage 
+{ 
+	result.name := "myPackage" + self.toString().substringAfter("@");
+	result.nsPrefix := "myPackage" + self.toString().substringAfter("@");
+	result.nsURI := "http://servicemodel/1.0";
+	eClassifiers += self.EReference0 -> select(a | a.oclIsKindOf(EClass1))[EClass1] -> map defEClass2EClass(); 
+	eClassifiers += self.EReference1 -> select(a | a.oclIsKindOf(EClass2))[EClass2] -> map defEClass2EClass();
+	//end { 
+	//	-- nachdem alle EClasses angelegt wurden, kann man die Referenzen setzen 
+	//	result.eClassifiers -> forEach (eClassifier | eClassifier.oclIsKindOf(EClass)) { 
+	//		map createReferences(eClassifier.oclAsType(EClass)); 
+	//	} 
+	//} 
+} 
+
+mapping EClass1 :: defEClass2EClass() : EClass
+{
+	result.name := "myEclass1" + self.toString().substringAfter("@");
+}
+
+mapping EClass2 :: defEClass2EClass() : EClass
+{
+	result.name := "myEclass2" + self.toString().substringAfter("@");
+}
+
+mapping createReferences(inout eClass : EClass) { 
+	//eClass.eStructuralFeatures := EClass.allInstances() -> select(a : EClass | 
+	//a.name = eClass.name) -> ownedAttribute -> map Property2EReferences(); 
+} 
+ 
+ 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http:///www.eclipse.org/m2m/qvt/operational/trace.ecore">
+  <traceRecords>
+    <mappingOperation name="X2EPackage" package="NewTransformation" module="NewTransformation">
+      <runtimeMappingOperation href="../transforms/DslToEcore.qvtox#//X2EPackage"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Model">
+        <value>
+          <modelElement href="DslToEcoreIn.mydsl#/"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="EPackage">
+        <value>
+          <modelElement href="DslToEcoreOut.ecore#/"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="defGreeting2EClass" package="NewTransformation" module="NewTransformation">
+      <runtimeMappingOperation href="../transforms/DslToEcore.qvtox#//defGreeting2EClass"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Greeting">
+        <value>
+          <modelElement href="DslToEcoreIn.mydsl#//@greetings.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="EClass">
+        <value>
+          <modelElement href="DslToEcoreOut.ecore#//myGreetingEclass41bdd8e4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="defGreeting2EClass" package="NewTransformation" module="NewTransformation">
+      <runtimeMappingOperation href="../transforms/DslToEcore.qvtox#//defGreeting2EClass"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Greeting">
+        <value>
+          <modelElement href="DslToEcoreIn.mydsl#//@greetings.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="EClass">
+        <value>
+          <modelElement href="DslToEcoreOut.ecore#//myGreetingEclass16ea8274"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+</trace:Trace>

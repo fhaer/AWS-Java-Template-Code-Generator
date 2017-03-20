@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uniba.wiai.seda.fha.swarchitektur/src-gen"
+    editDirectory="/de.uniba.wiai.seda.fha.swarchitektur.edit/src" editorDirectory="/de.uniba.wiai.seda.fha.swarchitektur.editor/src"
+    modelPluginID="de.uniba.wiai.seda.fha.swarchitektur" forceOverwrite="true" modelName="Swarchitektur"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.uniba.wiai.seda.fha.swarchitektur.edit"
+    editorPluginID="de.uniba.wiai.seda.fha.swarchitektur.editor" runtimeVersion="2.9">
+  <genPackages prefix="Swarchitektur" basePackage="de.uniba.wiai.seda.fha.swarchitektur"
+      disposableProviderFactory="true" fileExtensions="sw" ecorePackage="Swarchitektur.ecore#/">
+    <genClasses ecoreClass="Swarchitektur.ecore#//Architektur">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Architektur/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Architektur/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Architektur/pakete"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//Package">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Package/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Package/komponenten"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Package/entities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Package/pakete"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//EJB">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//EJB/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//SessionBean"/>
+    <genClasses ecoreClass="Swarchitektur.ecore#//BusinessInterface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//BusinessInterface/methoden"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//Methodensignatur">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Methodensignatur/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//StatefulSessionBean">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//StatefulSessionBean/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//StatefulSessionBean/methode"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//Attribut">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Attribut/typ"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Attribut/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//Methode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Methode/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Methode/aufruf"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//Aufruf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//Aufruf/objekt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//Aufruf/methode"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//StatelessSessionBean">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//StatelessSessionBean/methode"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//JPAEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Swarchitektur.ecore#//JPAEntity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//JPAEntity/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Swarchitektur.ecore#//JPAEntity/methode"/>
+    </genClasses>
+    <genClasses ecoreClass="Swarchitektur.ecore#//MessageDrivenBean"/>
+    <genClasses ecoreClass="Swarchitektur.ecore#//SingletonSessionBean"/>
+  </genPackages>
+</genmodel:GenModel>

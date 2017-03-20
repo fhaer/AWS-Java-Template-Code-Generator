@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swdesign:Design xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:swdesign="http://www.uniba.de/wiai/seda/fha/swarchitektur/Swdesign" name="Absatz">
+  <modules name="EntitaetsService_KundeES">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="entitaetsservices.kundees"
+        name="KundeES">
+      <methode outputTyp="Kunde" name="createKunde"/>
+      <methode outputTyp="Kunde" name="readKunde">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateKunde">
+        <inputTypen>Kunde</inputTypen>
+      </methode>
+      <methode name="deleteKunde">
+        <inputTypen>Kunde</inputTypen>
+      </methode>
+    </ejb>
+    <interfaces package="entitaetsservices" name="KundeES">
+      <methoden outputTyp="Kunde" name="createKunde"/>
+      <methoden outputTyp="Kunde" name="readKunde">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateKunde">
+        <inputTypen>Kunde</inputTypen>
+      </methoden>
+      <methoden name="deleteKunde">
+        <inputTypen>Kunde</inputTypen>
+      </methoden>
+    </interfaces>
+    <entities package="entitaetsservices.kundees.entitaeten" name="Kunde">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="Name" name="Name"/>
+      <attribute typ="Vorname" name="Vorname"/>
+      <attribute typ="Strasse" name="Strasse"/>
+      <attribute typ="Hausnummer" name="Hausnummer"/>
+      <attribute typ="PLZ" name="PLZ"/>
+      <attribute typ="Ort" name="Ort"/>
+      <attribute typ="Email" name="Email"/>
+      <attribute typ="Telefonnr" name="Telefonnr"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Name" name="getName"/>
+      <methode outputTyp="Vorname" name="getVorname"/>
+      <methode outputTyp="Strasse" name="getStrasse"/>
+      <methode outputTyp="Hausnummer" name="getHausnummer"/>
+      <methode outputTyp="PLZ" name="getPLZ"/>
+      <methode outputTyp="Ort" name="getOrt"/>
+      <methode outputTyp="Email" name="getEmail"/>
+      <methode outputTyp="Telefonnr" name="getTelefonnr"/>
+      <methode name="setName">
+        <inputTypen>Name</inputTypen>
+      </methode>
+      <methode name="setVorname">
+        <inputTypen>Vorname</inputTypen>
+      </methode>
+      <methode name="setStrasse">
+        <inputTypen>Strasse</inputTypen>
+      </methode>
+      <methode name="setHausnummer">
+        <inputTypen>Hausnummer</inputTypen>
+      </methode>
+      <methode name="setPLZ">
+        <inputTypen>PLZ</inputTypen>
+      </methode>
+      <methode name="setOrt">
+        <inputTypen>Ort</inputTypen>
+      </methode>
+      <methode name="setEmail">
+        <inputTypen>Email</inputTypen>
+      </methode>
+      <methode name="setTelefonnr">
+        <inputTypen>Telefonnr</inputTypen>
+      </methode>
+    </entities>
+  </modules>
+  <modules name="EntitaetsService_AuftragES">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="entitaetsservices.auftrages"
+        name="AuftragES">
+      <methode outputTyp="Bestellung" name="createBestellung"/>
+      <methode outputTyp="Bestellung" name="readBestellung">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateBestellung">
+        <inputTypen>Bestellung</inputTypen>
+      </methode>
+      <methode outputTyp="Produktionsauftrag" name="createProduktionsauftrag"/>
+      <methode outputTyp="Produktionsauftrag" name="readProduktionsauftrag">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateProduktionsauftrag">
+        <inputTypen>Produktionsauftrag</inputTypen>
+      </methode>
+      <methode outputTyp="Individualisierung" name="createIndividualisierung"/>
+      <methode outputTyp="Individualisierung" name="readIndividualisierung">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateIndividualisierung">
+        <inputTypen>Individualisierung</inputTypen>
+      </methode>
+      <methode outputTyp="ECarPreisverzeichnis" name="readECarPreisverzeichnis"/>
+      <methode name="updateECarPreisverzeichnis">
+        <inputTypen>ECarPreisverzeichnis</inputTypen>
+      </methode>
+    </ejb>
+    <interfaces package="entitaetsservices" name="AuftragES">
+      <methoden outputTyp="Bestellung" name="createBestellung"/>
+      <methoden outputTyp="Bestellung" name="readBestellung">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateBestellung">
+        <inputTypen>Bestellung</inputTypen>
+      </methoden>
+      <methoden outputTyp="Produktionsauftrag" name="createProduktionsauftrag"/>
+      <methoden outputTyp="Produktionsauftrag" name="readProduktionsauftrag">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateProduktionsauftrag">
+        <inputTypen>Produktionsauftrag</inputTypen>
+      </methoden>
+      <methoden outputTyp="Individualisierung" name="createIndividualisierung"/>
+      <methoden outputTyp="Individualisierung" name="readIndividualisierung">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateIndividualisierung">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+      <methoden outputTyp="ECarPreisverzeichnis" name="readECarPreisverzeichnis"/>
+      <methoden name="updateECarPreisverzeichnis">
+        <inputTypen>ECarPreisverzeichnis</inputTypen>
+      </methoden>
+    </interfaces>
+    <entities package="entitaetsservices.auftrages.entitaeten" name="Bestellung">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="KundeID" name="KundeID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="KundeID" name="getKundeID"/>
+      <methode name="setKundeID">
+        <inputTypen>KundeID</inputTypen>
+      </methode>
+    </entities>
+    <entities package="entitaetsservices.auftrages.entitaeten" name="Produktionsauftrag">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="BestellungID" name="BestellungID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="BestllungID" name="getBestellungID"/>
+      <methode name="setBestellungID">
+        <inputTypen>BestellungID</inputTypen>
+      </methode>
+    </entities>
+    <entities package="entitaetsservices.auftrages.entitaeten" name="Individualisierung">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="ProduktionsauftragID" name="ProduktionsauftragID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <attribute typ="Individualteile" name="Individualteile"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="ProduktionsauftragID" name="getProduktionsauftragID"/>
+      <methode name="setProduktionsauftragID">
+        <inputTypen>ProduktionsauftragID</inputTypen>
+      </methode>
+      <methode name="setIndividualteile">
+        <inputTypen>Individualteile</inputTypen>
+      </methode>
+      <methode outputTyp="Individualteile" name="getIndividualteile"/>
+    </entities>
+    <entities package="entitaetsservices.auftrages.entitaeten" name="ECarPreisverzeichnis">
+      <attribute typ="Basispreis" name="Basispreis"/>
+      <methode outputTyp="Basispreis" name="getBasispreis"/>
+      <methode name="setBasispreis">
+        <inputTypen>Basispreis</inputTypen>
+      </methode>
+    </entities>
+  </modules>
+  <modules name="EntitaetsService_AuslieferungES">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="entitaetsservices.auslieferunges"
+        name="AuslieferungES">
+      <methode outputTyp="Lieferung" name="createLieferung"/>
+      <methode outputTyp="Lieferung" name="readLieferung">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateLieferung">
+        <inputTypen>Lieferung</inputTypen>
+      </methode>
+    </ejb>
+    <interfaces package="entitaetsservices" name="AuslieferungES">
+      <methoden outputTyp="Lieferung" name="createLieferung"/>
+      <methoden outputTyp="Lieferung" name="readLieferung">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateLieferung">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+    <entities package="entitaetsservices.auslieferunges.entitaeten" name="Lieferung">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="IndividualisierungID" name="IndividualisierungID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <attribute typ="AuslieferungErfolgt" name="AuslieferungErfolgt"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="IndividualisierungID" name="getIndividualisierungID"/>
+      <methode name="setIndividualisierungID">
+        <inputTypen>IndividualisierungID</inputTypen>
+      </methode>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="AuslieferungErfolgt" name="getAuslieferungErfolgt"/>
+      <methode name="setAuslieferungErfolgt">
+        <inputTypen>AuslieferungErfolgt</inputTypen>
+      </methode>
+    </entities>
+  </modules>
+  <modules name="EntitaetsService_FinanzwesenES">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="entitaetsservices.finanzwesenes"
+        name="FinanzwesenES">
+      <methode outputTyp="Forderung" name="createForderung"/>
+      <methode outputTyp="Forderung" name="readForderung">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateForderung">
+        <inputTypen>Forderung</inputTypen>
+      </methode>
+      <methode outputTyp="RechnungZahlung" name="createRechnungZahlung"/>
+      <methode outputTyp="RechnungZahlung" name="readRechnungZahlung">
+        <inputTypen>ID</inputTypen>
+      </methode>
+      <methode name="updateRechnungZahlung">
+        <inputTypen>RechnungZahlung</inputTypen>
+      </methode>
+    </ejb>
+    <interfaces package="entitaetsservices" name="FinanzwesenES">
+      <methoden outputTyp="Forderung" name="createForderung"/>
+      <methoden outputTyp="Forderung" name="readForderung">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateForderung">
+        <inputTypen>Forderung</inputTypen>
+      </methoden>
+      <methoden outputTyp="RechnungZahlung" name="createRechnungZahlung"/>
+      <methoden outputTyp="RechnungZahlung" name="readRechnungZahlung">
+        <inputTypen>ID</inputTypen>
+      </methoden>
+      <methoden name="updateRechnungZahlung">
+        <inputTypen>RechnungZahlung</inputTypen>
+      </methoden>
+    </interfaces>
+    <entities package="entitaetsservices.finanzwesenes.entitaeten" name="Forderung">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="AuslieferungID" name="AuslieferungID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <attribute typ="Betrag" name="Betrag"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="AuslieferungID" name="getAuslieferungID"/>
+      <methode name="setAuslieferungID">
+        <inputTypen>AuslieferungID</inputTypen>
+      </methode>
+      <methode outputTyp="Betrag" name="getBetrag"/>
+      <methode name="setBetrag">
+        <inputTypen>Betrag</inputTypen>
+      </methode>
+    </entities>
+    <entities package="entitaetsservices.finanzwesenes.entitaeten" name="RechnungZahlung">
+      <attribute typ="ID" name="ID"/>
+      <attribute typ="ForderungID" name="ForderungID"/>
+      <attribute typ="Zeitstempel" name="Zeitstempel"/>
+      <attribute typ="Betrag" name="Betrag"/>
+      <attribute typ="BezahlungErfolgt" name="BezahlungErfolgt"/>
+      <methode outputTyp="ID" name="getID"/>
+      <methode outputTyp="Zeitstempel" name="getZeitstempel"/>
+      <methode name="setZeitstempel">
+        <inputTypen>Zeitstempel</inputTypen>
+      </methode>
+      <methode outputTyp="ForderungID" name="getForderungID"/>
+      <methode name="setForderungID">
+        <inputTypen>ForderungID</inputTypen>
+      </methode>
+      <methode outputTyp="Betrag" name="getBetrag"/>
+      <methode name="setBetrag">
+        <inputTypen>Betrag</inputTypen>
+      </methode>
+      <methode name="setBezahlungErfolgt">
+        <inputTypen>BezahlungErfolgt</inputTypen>
+      </methode>
+      <methode outputTyp="BezahlungErfolgt" name="getBezahlungErfolgt"/>
+    </entities>
+  </modules>
+  <modules name="VorgangsService_DirektvertriebVS">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.direktvertriebvs.WebShopBestellungVSe"
+        name="WebShopBestellungVSe">
+      <attribute typ="AuftragES" name="AuftragES"/>
+      <attribute typ="KundeES" name="KundeES"/>
+      <attribute typ="Kunde" name="Kunde"/>
+      <attribute typ="ECarPreisverzeichnis" name="ECarPreisverzeichnis"/>
+      <methode name="bestellungAnnehmen">
+        <inputTypen>Kunde</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.direktvertriebvs.AuftragVSe"
+        name="AuftragVSe">
+      <attribute typ="Bestellung" name="Bestellung"/>
+      <methode name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.direktvertriebvs"
+        name="DirektvertriebVS">
+      <attribute typ="DirektvertriebVS" name="DirektvertriebVS"/>
+      <methode name="bestellungAnnehmen">
+        <inputTypen>Kunde</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.4/@ejb.0" methodensignatur="#//@modules.4/@interfaces.1/@methoden.0">
+          <parameterTypen>Kunde</parameterTypen>
+        </invoke>
+      </methode>
+      <queue name="DirektvertriebVS_Queue">
+        <nachrichtenTypen>Kunde</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.direktvertriebvs"
+        name="DirektvertriebVS">
+      <attribute typ="AuftragVSe" name="AuftragVSe"/>
+      <attribute typ="WebShopBestellungVSe" name="WebShopBestellungVSe"/>
+      <attribute typ="DirektvertriebVS_MDB" name="messageDrivenBean"/>
+      <methode name="bestellungAnnehmen">
+        <inputTypen>Kunde</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.4/@ejb.0" methodensignatur="#//@modules.4/@interfaces.1/@methoden.0">
+          <parameterTypen>Kunde</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.4/@ejb.3" methodensignatur="#//@modules.4/@interfaces.2/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.4/@ejb.1" methodensignatur="#//@modules.4/@interfaces.2/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.5/@ejb.2/@queue">
+          <nachrichtenTypen>Bestellung</nachrichtenTypen>
+        </invoke>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="DirektvertriebVS">
+      <methoden name="bestellungAnnehmen">
+        <inputTypen>Kunde</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.direktvertriebvs.WebShopBestellungVSe" name="WebShopBestellungVSe">
+      <methoden name="bestellungAnnehmen">
+        <inputTypen>Kunde</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.direktvertriebvs.AuftragVSe" name="AuftragVSe">
+      <methoden name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+  <modules name="VorgangsService_BestellungVS">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.bestellungvs.AuftragVSe"
+        name="AuftragVSe">
+      <attribute typ="AuftragES" name="AuftragES"/>
+      <attribute typ="Bestellung" name="Bestellung"/>
+      <methode name="bearbeiteAuftrag">
+        <inputTypen>Bestellung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.bestellungvs.ProduktionsauftragVSe"
+        name="ProduktionsauftragVSe">
+      <attribute typ="AuftragES" name="AuftragES"/>
+      <attribute typ="Bestellung" name="Bestellung"/>
+      <attribute typ="Produktionsauftrag" name="Produktionsauftrag"/>
+      <methode name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.bestellungvs"
+        name="BestellungVS">
+      <attribute typ="BestellungVS" name="BestellungVS"/>
+      <methode name="bearbeiteAuftrag">
+        <inputTypen>Bestellung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.5/@ejb.0" methodensignatur="#//@modules.5/@interfaces.1/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+      </methode>
+      <queue name="BestellungVS_Queue">
+        <nachrichtenTypen>Bestellung</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.bestellungvs"
+        name="BestellungVS">
+      <attribute typ="ProduktionsauftragVSe" name="ProduktionsauftragVSe"/>
+      <attribute typ="AuftragVSe" name="AuftragVSe"/>
+      <attribute typ="BestellungVS_MDB" name="messageDrivenBean"/>
+      <methode name="bearbeiteAuftrag">
+        <inputTypen>Bestellung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.5/@ejb.0" methodensignatur="#//@modules.5/@interfaces.1/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.5/@ejb.3" methodensignatur="#//@modules.5/@interfaces.2/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.5/@ejb.1" methodensignatur="#//@modules.5/@interfaces.2/@methoden.0">
+          <parameterTypen>Bestellung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.9/@ejb.0/@queue">
+          <nachrichtenTypen>Produktionsauftrag</nachrichtenTypen>
+        </invoke>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="BestellungVS">
+      <methoden name="bearbeiteAuftrag">
+        <inputTypen>Bestellung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.bestellungvs.AuftragVSe" name="AuftragVSe">
+      <methoden name="bearbeiteAuftrag">
+        <inputTypen>Bestellung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.bestellungvs.ProduktionsauftragVSe" name="ProduktionsauftragVSe">
+      <methoden name="auftragErstellen">
+        <inputTypen>Bestellung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+  <modules name="VorgangsService_AuftragsabwicklungVS">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auftragsabwicklungvs.IndividualisierungKundeVSe"
+        name="IndividualisierungKundeVSe">
+      <attribute typ="AuftragES" name="AuftragES"/>
+      <attribute typ="Individualisierung" name="Individualisierung"/>
+      <methode name="individualisierungAnnehmen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auftragsabwicklungvs.IndividualisierungProduktionVSe"
+        name="IndividualisierungProduktionVSe">
+      <attribute typ="Individualisierung" name="Individualisierung"/>
+      <methode name="individualisierungBearbeiten">
+        <inputTypen>Individualisierung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auftragsabwicklungvs.AuslieferungVSe"
+        name="AuslieferungVSe">
+      <attribute typ="AuslieferungES" name="AuslieferungES"/>
+      <attribute typ="Individualisierung" name="Individualisierung"/>
+      <attribute typ="Lieferung" name="Lieferung"/>
+      <methode name="auslieferungAnweisen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methode>
+      <methode name="auslieferungErfolgt">
+        <inputTypen>Lieferung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auftragsabwicklungvs.ForderungErstellenVSe"
+        name="ForderungErstellenVSe">
+      <attribute typ="Forderung" name="Forderung"/>
+      <attribute typ="Lieferung" name="Lieferung"/>
+      <methode name="forderungErstellen">
+        <inputTypen>Lieferung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.auftragsabwicklungvs"
+        name="AuftragsabwicklungVS">
+      <attribute typ="AuftragsabwicklungVS" name="AuftragsabwicklungVS"/>
+      <methode name="individualisierungAnnehmen">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.0" methodensignatur="#//@modules.6/@interfaces.1/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="auslieferungErfolgt">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.2" methodensignatur="#//@modules.6/@interfaces.3/@methoden.1">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+      </methode>
+      <queue name="AuftragsabwicklungVS_Queue">
+        <nachrichtenTypen>Individualisierung</nachrichtenTypen>
+        <nachrichtenTypen>Lieferung</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.auftragsabwicklungvs"
+        name="AuftragsabwicklungVS">
+      <attribute typ="IndividualisierungKundeVSe" name="IndividualisierungKundeVSe"/>
+      <attribute typ="ForderungErstellenVSe" name="ForderungErstellenVSe"/>
+      <attribute typ="AuslieferungVSe" name="AuslieferungVSe"/>
+      <attribute typ="IndividualisierungProduktionVSe" name="IndividualisierungProduktionVSe"/>
+      <attribute typ="AuftragsabwicklungVS_MDB" name="messageDrivenBean"/>
+      <methode name="individualisierungAnnehmen">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.0" methodensignatur="#//@modules.6/@interfaces.1/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.5" methodensignatur="#//@modules.6/@interfaces.2/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="auslieferungErfolgt">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.2" methodensignatur="#//@modules.6/@interfaces.3/@methoden.1">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.5" methodensignatur="#//@modules.6/@interfaces.4/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="individualisierungBearbeiten">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.1" methodensignatur="#//@modules.6/@interfaces.2/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.9/@ejb.0/@queue">
+          <nachrichtenTypen>Individualisierung</nachrichtenTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.5" methodensignatur="#//@modules.6/@interfaces.3/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="auslieferungAnweisen">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.2" methodensignatur="#//@modules.6/@interfaces.3/@methoden.0">
+          <parameterTypen>Individualisierung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.7/@ejb.2/@queue">
+          <nachrichtenTypen>Lieferung</nachrichtenTypen>
+        </invoke>
+      </methode>
+      <methode name="forderungErstellen">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.6/@ejb.3" methodensignatur="#//@modules.6/@interfaces.4/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.8/@ejb.2/@queue">
+          <nachrichtenTypen>Forderung</nachrichtenTypen>
+        </invoke>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="AuftragsabwicklungVS">
+      <methoden name="individualisierungAnnehmen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+      <methoden name="auslieferungErfolgt">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auftragsabwicklungvs.IndividualisierungKundeVSe"
+        name="IndividualisierungKundeVSe">
+      <methoden name="individualisierungAnnehmen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auftragsabwicklungvs.IndividualisierungProduktionVSe"
+        name="IndividualisierungProduktionVSe">
+      <methoden name="individualisierungBearbeiten">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auftragsabwicklungvs.AuslieferungVSe" name="AuslieferungVSe">
+      <methoden name="auslieferungAnweisen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+      <methoden name="auslieferungErfolgt">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auftragsabwicklungvs.ForderungErstellenVSe"
+        name="ForderungErstellenVSe">
+      <methoden name="forderungErstellen">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+  <modules name="VorgangsService_AuslieferungVS">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auslieferungvs.AuslieferungsanweisungVSe"
+        name="AuslieferungsanweisungVSe">
+      <attribute typ="AuslieferungES" name="AuslieferungES"/>
+      <attribute typ="Lieferung" name="Lieferung"/>
+      <methode name="auslieferungBeauftragen">
+        <inputTypen>Lieferung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.auslieferungvs.AuslieferungsbestaetigungVSe"
+        name="AuslieferungsbestaetigungVSe">
+      <attribute typ="Lieferung" name="Lieferung"/>
+      <methode name="ausliefernBestaetigen">
+        <inputTypen>Lieferung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.auslieferungvs"
+        name="AuslieferungVS">
+      <attribute typ="AuslieferungVS" name="AuslieferungVS"/>
+      <methode name="auslieferungBeauftragen">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.7/@ejb.0" methodensignatur="#//@modules.7/@interfaces.1/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+      </methode>
+      <queue name="AuslieferungVS_Queue">
+        <nachrichtenTypen>Lieferung</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.auslieferungvs"
+        name="AuslieferungVS">
+      <attribute typ="AuslieferungsbestaetigungVSe" name="AuslieferungsbestaetigungVSe"/>
+      <attribute typ="AuslieferungsanweisungVSe" name="AuslieferungsanweisungVSe"/>
+      <attribute typ="AuslieferungVS_MDB" name="messageDrivenBean"/>
+      <methode name="auslieferungBeauftragen">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.7/@ejb.0" methodensignatur="#//@modules.7/@interfaces.1/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.7/@ejb.3" methodensignatur="#//@modules.7/@interfaces.2/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="ausliefernBestaetigen">
+        <inputTypen>Lieferung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.7/@ejb.1" methodensignatur="#//@modules.7/@interfaces.2/@methoden.0">
+          <parameterTypen>Lieferung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeQueueAsync" queueName="#//@modules.6/@ejb.4/@queue">
+          <nachrichtenTypen>Lieferung</nachrichtenTypen>
+        </invoke>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="AuslieferungVS">
+      <methoden name="auslieferungBeauftragen">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auslieferungvs.AuslieferungsanweisungVSe"
+        name="AuslieferungsanweisungVSe">
+      <methoden name="auslieferungBeauftragen">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.auslieferungvs.AuslieferungsbestaetigungVSe"
+        name="AuslieferungsbestaetigungVSe">
+      <methoden name="ausliefernBestaetigen">
+        <inputTypen>Lieferung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+  <modules name="VorgangsService_FinanzwesenVS">
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.finanzwesenvs.ForderungVSe"
+        name="ForderungVSe">
+      <attribute typ="FinanzwesenES" name="FinanzwesenES"/>
+      <attribute typ="Forderung" name="Forderung"/>
+      <methode name="meldeForderung">
+        <inputTypen>Forderung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:StatelessSessionBean" package="vorgangsservices.finanzwesenvs.RechnungVSe"
+        name="RechnungVSe">
+      <attribute typ="FinanzwesenES" name="FinanzwesenES"/>
+      <attribute typ="Forderung" name="Forderung"/>
+      <attribute typ="Rechnung" name="Rechnung"/>
+      <methode name="erstelleRechnung">
+        <inputTypen>Forderung</inputTypen>
+      </methode>
+    </ejb>
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.finanzwesenvs"
+        name="FinanzwesenVS">
+      <attribute typ="FinanzwesenVS" name="FinanzwesenVS"/>
+      <methode name="meldeForderung">
+        <inputTypen>Forderung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.8/@ejb.0" methodensignatur="#//@modules.8/@interfaces.1/@methoden.0">
+          <parameterTypen>Forderung</parameterTypen>
+        </invoke>
+      </methode>
+      <queue name="FinanzwesenVS_Queue">
+        <nachrichtenTypen>Forderung</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.finanzwesenvs"
+        name="FinanzwesenVS">
+      <attribute typ="ForderungVSe" name="ForderungVSe"/>
+      <attribute typ="RechnungVSe" name="RechnungVSe"/>
+      <attribute typ="FinanzwesenVS_MDB" name="messageDrivenBean"/>
+      <methode name="meldeForderung">
+        <inputTypen>Forderung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.8/@ejb.0" methodensignatur="#//@modules.8/@interfaces.1/@methoden.0">
+          <parameterTypen>Forderung</parameterTypen>
+        </invoke>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.8/@ejb.3" methodensignatur="#//@modules.8/@interfaces.2/@methoden.0">
+          <parameterTypen>Forderung</parameterTypen>
+        </invoke>
+      </methode>
+      <methode name="erstelleRechnung">
+        <inputTypen>Forderung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync" ejb="#//@modules.8/@ejb.1" methodensignatur="#//@modules.8/@interfaces.2/@methoden.0">
+          <parameterTypen>Forderung</parameterTypen>
+        </invoke>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="FinanzwesenVS">
+      <methoden name="meldeForderung">
+        <inputTypen>Forderung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.finanzwesenvs.ForderungVSe" name="ForderungVSe">
+      <methoden name="meldeForderung">
+        <inputTypen>Forderung</inputTypen>
+      </methoden>
+    </interfaces>
+    <interfaces package="vorgangsservices.finanzwesenvs.RechnungVSe" name="RechnungVSe">
+      <methoden name="erstelleRechnung">
+        <inputTypen>Forderung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+  <modules name="VorgangsService_ProduktionVS">
+    <ejb xsi:type="swdesign:MessageDrivenBean" package="vorgangsservices.produktionvs"
+        name="ProduktionVS">
+      <attribute typ="ProduktionVS" name="ProduktionVS"/>
+      <methode name="erteileProduktionsauftrag">
+        <inputTypen>Produktionsauftrag</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync"/>
+      </methode>
+      <methode name="indivigualisierungBeauftragen">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync"/>
+      </methode>
+      <queue name="ProduktionVS_Queue">
+        <nachrichtenTypen>Produktionsauftrag</nachrichtenTypen>
+        <nachrichtenTypen>Individualisierung</nachrichtenTypen>
+      </queue>
+    </ejb>
+    <ejb xsi:type="swdesign:StatefulSessionBean" package="vorgangsservices.produktionvs"
+        name="ProduktionVS">
+      <attribute typ="ProduktionVS_MDB" name="messageDrivenBean"/>
+      <methode name="erteileProduktionsauftrag">
+        <inputTypen>Produktionsauftrag</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync"/>
+      </methode>
+      <methode name="indivigualisierungBeauftragen">
+        <inputTypen>Individualisierung</inputTypen>
+        <invoke xsi:type="swdesign:InvokeEJBSync"/>
+      </methode>
+    </ejb>
+    <interfaces package="vorgangsservices" name="ProduktionVS">
+      <methoden name="erteileProduktionsauftrag">
+        <inputTypen>Produktionsauftrag</inputTypen>
+      </methoden>
+      <methoden name="indivigualisierungBeauftragen">
+        <inputTypen>Individualisierung</inputTypen>
+      </methoden>
+    </interfaces>
+  </modules>
+</swdesign:Design>

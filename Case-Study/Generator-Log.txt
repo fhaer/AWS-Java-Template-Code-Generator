@@ -1,0 +1,459 @@
+Generiere Konfiguration für EJB-Module ...
+  EJB-Modul EntitaetsService_KundeES
+  EJB-Modul EntitaetsService_AuftragES
+  EJB-Modul EntitaetsService_AuslieferungES
+  EJB-Modul EntitaetsService_FinanzwesenES
+  EJB-Modul VorgangsService_DirektvertriebVS
+  EJB-Modul VorgangsService_BestellungVS
+  EJB-Modul VorgangsService_AuftragsabwicklungVS
+  EJB-Modul VorgangsService_AuslieferungVS
+  EJB-Modul VorgangsService_FinanzwesenVS
+  EJB-Modul VorgangsService_ProduktionVS
+Generiere JPA-Entities ...
+  EntitaetsService_KundeES
+    Kunde
+  EntitaetsService_AuftragES
+    Bestellung
+    Produktionsauftrag
+    Individualisierung
+    ECarPreisverzeichnis
+  EntitaetsService_AuslieferungES
+    Lieferung
+  EntitaetsService_FinanzwesenES
+    Forderung
+    RechnungZahlung
+Generiere EJBs ...
+  EntitaetsService_KundeES
+    Stateless Session Bean: KundeES
+  EntitaetsService_AuftragES
+    Stateless Session Bean: AuftragES
+  EntitaetsService_AuslieferungES
+    Stateless Session Bean: AuslieferungES
+  EntitaetsService_FinanzwesenES
+    Stateless Session Bean: FinanzwesenES
+  VorgangsService_DirektvertriebVS
+    Stateless Session Bean: WebShopBestellungVSe
+    Stateless Session Bean: AuftragVSe
+    Message Drive Bean: DirektvertriebVS
+    Stateful Session Bean: DirektvertriebVS
+  VorgangsService_BestellungVS
+    Stateless Session Bean: AuftragVSe
+    Stateless Session Bean: ProduktionsauftragVSe
+    Message Drive Bean: BestellungVS
+    Stateful Session Bean: BestellungVS
+  VorgangsService_AuftragsabwicklungVS
+    Stateless Session Bean: IndividualisierungKundeVSe
+    Stateless Session Bean: IndividualisierungProduktionVSe
+    Stateless Session Bean: AuslieferungVSe
+    Stateless Session Bean: ForderungErstellenVSe
+    Message Drive Bean: AuftragsabwicklungVS
+    Stateful Session Bean: AuftragsabwicklungVS
+  VorgangsService_AuslieferungVS
+    Stateless Session Bean: AuslieferungsanweisungVSe
+    Stateless Session Bean: AuslieferungsbestaetigungVSe
+    Message Drive Bean: AuslieferungVS
+    Stateful Session Bean: AuslieferungVS
+  VorgangsService_FinanzwesenVS
+    Stateless Session Bean: ForderungVSe
+    Stateless Session Bean: RechnungVSe
+    Message Drive Bean: FinanzwesenVS
+    Stateful Session Bean: FinanzwesenVS
+  VorgangsService_ProduktionVS
+    Message Drive Bean: ProduktionVS
+    Stateful Session Bean: ProduktionVS
+Generiere Business Interfaces ...
+  EntitaetsService_KundeES
+    KundeES
+  EntitaetsService_AuftragES
+    AuftragES
+  EntitaetsService_AuslieferungES
+    AuslieferungES
+  EntitaetsService_FinanzwesenES
+    FinanzwesenES
+  VorgangsService_DirektvertriebVS
+    DirektvertriebVS
+    WebShopBestellungVSe
+    AuftragVSe
+  VorgangsService_BestellungVS
+    BestellungVS
+    AuftragVSe
+    ProduktionsauftragVSe
+  VorgangsService_AuftragsabwicklungVS
+    AuftragsabwicklungVS
+    IndividualisierungKundeVSe
+    IndividualisierungProduktionVSe
+    AuslieferungVSe
+    ForderungErstellenVSe
+  VorgangsService_AuslieferungVS
+    AuslieferungVS
+    AuslieferungsanweisungVSe
+    AuslieferungsbestaetigungVSe
+  VorgangsService_FinanzwesenVS
+    FinanzwesenVS
+    ForderungVSe
+    RechnungVSe
+  VorgangsService_ProduktionVS
+    ProduktionVS
+
+Schreibe Dateien ...
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.classpath
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings\org.eclipse.wst.common.component
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.project
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\META-INF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\META-INF\glassfish-ejb-jar.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings\org.eclipse.jdt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings\org.eclipse.jpt.core.prefs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\META-INF\MANIFEST.MF
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\META-INF\persistence.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings\org.eclipse.wst.common.project.facet.core.prefs.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\.settings\org.eclipse.wst.common.project.facet.core.xml
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\queueCreateSkript.bat
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\entitaeten\Kunde.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Bestellung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Produktionsauftrag.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\Individualisierung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\entitaeten\ECarPreisverzeichnis.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\entitaeten\Lieferung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\Forderung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\entitaeten\RechnungZahlung.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\KundeES_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\kundees\KundeES_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\AuftragES_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auftrages\AuftragES_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\AuslieferungES_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\auslieferunges\AuslieferungES_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\FinanzwesenES_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\finanzwesenes\FinanzwesenES_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\webshopbestellungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\webshopbestellungvse\WebShopBestellungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\webshopbestellungvse\WebShopBestellungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\auftragvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\auftragvse\AuftragVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\auftragvse\AuftragVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\DirektvertriebVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\DirektvertriebVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\DirektvertriebVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\auftragvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\auftragvse\AuftragVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\auftragvse\AuftragVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\produktionsauftragvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\produktionsauftragvse\ProduktionsauftragVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\produktionsauftragvse\ProduktionsauftragVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\BestellungVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\BestellungVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\BestellungVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungkundevse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungkundevse\IndividualisierungKundeVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungkundevse\IndividualisierungKundeVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungproduktionvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungproduktionvse\IndividualisierungProduktionVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungproduktionvse\IndividualisierungProduktionVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\auslieferungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\auslieferungvse\AuslieferungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\auslieferungvse\AuslieferungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\forderungerstellenvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\forderungerstellenvse\ForderungErstellenVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\forderungerstellenvse\ForderungErstellenVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\AuftragsabwicklungVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\AuftragsabwicklungVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\AuftragsabwicklungVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsanweisungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsanweisungvse\AuslieferungsanweisungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsanweisungvse\AuslieferungsanweisungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsbestaetigungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsbestaetigungvse\AuslieferungsbestaetigungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsbestaetigungvse\AuslieferungsbestaetigungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\AuslieferungVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\AuslieferungVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\AuslieferungVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\forderungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\forderungvse\ForderungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\forderungvse\ForderungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\rechnungvse
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\rechnungvse\RechnungVSe_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\rechnungvse\RechnungVSe_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\FinanzwesenVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\FinanzwesenVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\FinanzwesenVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\produktionvs
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\produktionvs\ProduktionVS_MDB.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\produktionvs\ProduktionVS_Abs.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\produktionvs\ProduktionVS_Impl.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_KundeES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\KundeES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuftragES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuftragES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_AuslieferungES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\AuslieferungES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\EntitaetsService_FinanzwesenES\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\entitaetsservices\FinanzwesenES.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\DirektvertriebVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\webshopbestellungvse\WebShopBestellungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\direktvertriebvs\auftragvse\AuftragVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\BestellungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\auftragvse\AuftragVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\bestellungvs\produktionsauftragvse\ProduktionsauftragVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuftragsabwicklungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungkundevse\IndividualisierungKundeVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\individualisierungproduktionvse\IndividualisierungProduktionVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\auslieferungvse\AuslieferungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auftragsabwicklungvs\forderungerstellenvse\ForderungErstellenVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\AuslieferungVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsanweisungvse\AuslieferungsanweisungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\auslieferungvs\auslieferungsbestaetigungvse\AuslieferungsbestaetigungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\FinanzwesenVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\forderungvse\ForderungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\finanzwesenvs\rechnungvse\RechnungVSe.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_DirektvertriebVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_BestellungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuftragsabwicklungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_AuslieferungVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_FinanzwesenVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+  C:\Users\Haerer\Documents\ownCloud\Studium\Masterarbeit\Werkzeug_zur_Codegenerierung\Fallstudie\3_SW-Modell_Impl\VorgangsService_ProduktionVS\ejbModule\de\uniba\wiai\seda\fha\awsgen\vorgangsservices\ProduktionVS.java
+
+Codegenerierung abgeschlossen

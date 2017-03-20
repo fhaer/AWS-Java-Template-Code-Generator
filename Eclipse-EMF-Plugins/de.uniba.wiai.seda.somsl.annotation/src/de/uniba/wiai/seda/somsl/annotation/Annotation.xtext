@@ -1,0 +1,23 @@
+grammar de.uniba.wiai.seda.somsl.annotation.Annotation with org.eclipse.xtext.common.Terminals
+
+generate annotation "http://www.uniba.de/wiai/seda/somsl/annotation/Annotation"
+
+Annotation:
+	Name | Ignore | Merge;
+	
+Name:
+	"@name" name=ID;
+
+Merge:
+	"@merge" name=ID; // Alternativen: @vservice, @service
+	
+Ignore:
+	"@ignore" {Ignore};
+
+terminal ID:
+	'^'?('a'..'z'|'A'..'Z'|'_'|'<'|'>') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'<'|'>')*;
+		
+terminal VERSION:
+	('0'..'9')+'.'('0'..'9')+;
+	
+		

@@ -1,0 +1,430 @@
+AWS Absatz v 1.0
+KOS {
+	OOT Kunde {
+		ID; 
+		Name;
+		Vorname;
+		Strasse; 
+		Hausnummer;
+		PLZ; 
+		Ort;
+		Email;
+		Telefonnr;
+		ID getID();
+		Name getName();
+		Vorname getVorname(); 
+		Strasse getStrasse();
+		Hausnummer getHausnummer();
+		PLZ getPLZ();
+		Ort getOrt();
+		Email getEmail();
+		Telefonnr getTelefonnr();
+		setName(Name);
+		setVorname(Vorname);
+		setStrasse(Strasse);
+		setHausnummer(Hausnummer);
+		setPLZ(PLZ);
+		setOrt(Ort);
+		setEmail(Email);
+		setTelefonnr(Telefonnr);
+	}
+	LOT ECarPreisverzeichnis {
+		Basispreis;
+		Basispreis getBasispreis();
+		setBasispreis(Basispreis);
+	}
+	OOT Direktvertrieb {}
+	OOT Auftragsbearbeitung {}
+	OOT Finanzwesen {}
+	OOT Auslieferung {}
+	OOT Produktion {} 
+	
+	TOT Bestellung {
+		ID;
+		KundeID;
+		Zeitstempel;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		KundeID getKundeID();
+		setKundeID(KundeID);
+	}
+	TOT BestellPosition {
+		ID;
+		BestellungID;
+		Menge;
+		Zeitstempel;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		BestllungID getBestellungID();
+		setBestellungID(BestellungID);
+		Menge getMenge();
+		setMenge(Menge);
+	}
+	TOT Produktionsauftrag {
+		ID;
+		BestellungID;
+		Zeitstempel;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		BestllungID getBestellungID();
+		setBestellungID(BestellungID);
+	}
+	TOT Individualisierung {
+		ID;
+		ProduktionsauftragID;
+		Zeitstempel;
+		Individualteile;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		ProduktionsauftragID getProduktionsauftragID();
+		setProduktionsauftragID(ProduktionsauftragID);
+		setIndividualteile(Individualteile);
+		Individualteile getIndividualteile();
+	}
+	TOT Lieferung {
+		ID;
+		IndividualisierungID;
+		Zeitstempel;
+		AuslieferungErfolgt;
+		ID getID();
+		IndividualisierungID getIndividualisierungID();
+		setIndividualisierungID(IndividualisierungID);
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		AuslieferungErfolgt getAuslieferungErfolgt();
+		setAuslieferungErfolgt(AuslieferungErfolgt);
+	}
+	TOT Forderung {
+		ID; 
+		AuslieferungID;
+		Zeitstempel;
+		Betrag;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		AuslieferungID getAuslieferungID();
+		setAuslieferungID(AuslieferungID);
+		Betrag getBetrag();
+		setBetrag(Betrag);
+	}
+	TOT RechnungZahlung {
+		ID; 
+		ForderungID;
+		Zeitstempel;
+		Betrag;
+		BezahlungErfolgt;
+		ID getID();
+		Zeitstempel getZeitstempel();
+		setZeitstempel(Zeitstempel);
+		ForderungID getForderungID();
+		setForderungID(ForderungID);
+		Betrag getBetrag();
+		setBetrag(Betrag);
+		setBezahlungErfolgt(BezahlungErfolgt);
+		BezahlungErfolgt getBezahlungErfolgt();
+	}
+	
+	// Beziehungen
+	Kunde -> Bestellung;
+	ECarPreisverzeichnis -> Bestellung;
+	Direktvertrieb -> Bestellung;
+	Auftragsbearbeitung -> Produktionsauftrag;
+	Auslieferung -> Lieferung;
+	Finanzwesen -> Forderung;
+	
+	Bestellung => BestellPosition;
+	
+	Bestellung -- Produktionsauftrag;
+	Produktionsauftrag -- Individualisierung;
+	Individualisierung -- Lieferung;
+	Lieferung -- Forderung;
+	Forderung -- RechnungZahlung;
+}
+VOS: Direktvertrieb {
+	VOT >WebShopBestellung {
+		Kunde;
+		ECarPreisverzeichnis;
+		bestellungAnnehmen(Kunde);
+	}
+	VOT Auftrag> {
+		Bestellung;
+		auftragErstellen(Bestellung);
+	} 
+	>WebShopBestellung -> Auftrag>;
+	Auftrag> -> >Auftrag;
+} 
+VOS: Auftragsbearbeitung {
+	VOT >Auftrag {
+		Bestellung;
+		bearbeiteAuftrag(Bestellung);
+	}
+	VOT Produktionsauftrag> {
+		Bestellung;
+		Produktionsauftrag;
+		auftragErstellen(Bestellung);
+	}
+	VOT >IndividualisierungKunde {
+		Individualisierung;
+		individualisierungAnnehmen(Individualisierung);
+	}
+	VOT IndividualisierungProduktion> {
+		Individualisierung;
+		individualisierungBearbeiten(Individualisierung);
+	} 
+	VOT Auslieferungsanweisung> {
+		Individualisierung;
+		auslieferungAnweisen(Individualisierung);
+	}
+	VOT >Auslieferungsbestaetigung {
+		Lieferung;
+		auslieferungErfolgt(Lieferung);
+	}
+	VOT Forderung> {
+		Forderung;
+		Lieferung;
+		forderungErstellen(Lieferung);
+	}
+	>Auftrag -> Produktionsauftrag>;
+	Produktionsauftrag> -> >Produktionsauftrag;
+	
+	>IndividualisierungKunde -> IndividualisierungProduktion>;
+	IndividualisierungProduktion> -> >IndividualisierungProduktion;
+	IndividualisierungProduktion> -> Auslieferungsanweisung>;
+	Auslieferungsanweisung> -> >Auslieferungsanweisung;
+	
+	>Auslieferungsbestaetigung -> Forderung>; 
+	Forderung> -> >Forderung;
+}
+VOS: Auslieferung {
+	VOT >Auslieferungsanweisung {
+		Lieferung;
+		auslieferungBeauftragen(Lieferung);
+	}
+	VOT Auslieferungsbestaetigung> {
+		Lieferung;
+		ausliefernBestaetigen(Lieferung);
+	}
+	>Auslieferungsanweisung -> Auslieferungsbestaetigung>;
+	Auslieferungsbestaetigung> -> >Auslieferungsbestaetigung;
+}
+VOS: Finanzwesen {
+	VOT >Forderung {
+		Forderung;
+		meldeForderung(Forderung);
+	}
+	VOT Rechnung> {
+		Forderung;
+		Rechnung;
+		erstelleRechnung(Forderung);
+	}
+	>Forderung -> Rechnung>;
+}
+
+// Umwelt: nur Modellierung der Schnittstellen
+VOS: Produktion {
+	VOT >Produktionsauftrag {}
+	VOT >IndividualisierungProduktion {}
+}
+
+VorgangsService DirektvertriebVS {
+	Interface {
+		bestellungAnnehmen(Kunde);
+	}
+	VorgangsService WebShopBestellungVSe {
+		Interface { 
+			bestellungAnnehmen(Kunde);
+		}
+		EntitaetsService bestellungAnnehmen -> AuftragES;
+		EntitaetsService bestellungAnnehmen -> KundeES;
+		VOT >WebShopBestellung;
+	}
+	VorgangsService AuftragVSe {
+		Interface {
+			auftragErstellen(Bestellung);
+		}
+		VOT Auftrag>;
+	}
+	Workflow {
+		bestellungAnnehmen -> auftragErstellen;
+		auftragErstellen >> BestellungVS.bearbeiteAuftrag;
+	}
+}
+VorgangsService BestellungVS {
+	Interface {
+		bearbeiteAuftrag(Bestellung);
+	}
+	VorgangsService AuftragVSe {
+		Interface {
+			bearbeiteAuftrag(Bestellung);
+		}
+		EntitaetsService bearbeiteAuftrag -> AuftragES;
+		VOT >Auftrag;
+	}
+	VorgangsService ProduktionsauftragVSe {
+		Interface {
+			auftragErstellen(Bestellung);
+		}
+		EntitaetsService auftragErstellen -> AuftragES;
+		VOT Produktionsauftrag>;
+	}
+	Workflow {
+		bearbeiteAuftrag -> auftragErstellen;
+		auftragErstellen >> ProduktionVS.erteileProduktionsauftrag;
+	}
+}
+
+VorgangsService AuftragsabwicklungVS {
+	Interface {
+		individualisierungAnnehmen(Individualisierung);
+		auslieferungErfolgt(Lieferung);
+	}
+	VorgangsService IndividualisierungKundeVSe {
+		Interface { 
+			individualisierungAnnehmen(Individualisierung);
+		}
+		EntitaetsService individualisierungAnnehmen -> AuftragES;
+		VOT >IndividualisierungKunde;
+	}
+	VorgangsService IndividualisierungProduktionVSe {
+		Interface {
+			individualisierungBearbeiten(Individualisierung);
+		}
+		VOT IndividualisierungProduktion>;
+	}  
+	VorgangsService AuslieferungVSe {
+		Interface {
+			auslieferungAnweisen(Individualisierung);
+			auslieferungErfolgt(Lieferung);
+		}
+		EntitaetsService auslieferungErfolgt -> AuslieferungES;
+		// Message Exchange Pattern: Request-Response
+		VOT Auslieferungsanweisung>;    // Request
+		VOT >Auslieferungsbestaetigung; // Response
+	}
+	VorgangsService ForderungErstellenVSe {
+		Interface {
+			forderungErstellen(Lieferung);
+		}
+		VOT Forderung>;
+	}
+	Workflow {
+		individualisierungAnnehmen -> individualisierungBearbeiten;
+		individualisierungBearbeiten >> ProduktionVS.indivigualisierungBeauftragen;
+		individualisierungBearbeiten -> auslieferungAnweisen;
+		auslieferungAnweisen >> AuslieferungVS.auslieferungBeauftragen;
+		auslieferungErfolgt -> forderungErstellen;
+		forderungErstellen >> FinanzwesenVS.meldeForderung;
+	}
+}
+ 
+VorgangsService AuslieferungVS {
+	Interface {
+		auslieferungBeauftragen(Lieferung);
+	}
+	VorgangsService AuslieferungsanweisungVSe {
+		Interface {
+			auslieferungBeauftragen(Lieferung);
+		}
+		EntitaetsService auslieferungBeauftragen -> AuslieferungES;
+		VOT >Auslieferungsanweisung;
+	}
+	VorgangsService AuslieferungsbestaetigungVSe {
+		Interface {
+			ausliefernBestaetigen(Lieferung);
+		}
+		VOT Auslieferungsbestaetigung>;
+	}
+	Workflow {
+		auslieferungBeauftragen -> ausliefernBestaetigen;
+		ausliefernBestaetigen >> AuftragsabwicklungVS.auslieferungErfolgt;
+	}
+}
+
+VorgangsService FinanzwesenVS {
+	Interface {
+		meldeForderung(Forderung);
+	}
+	VorgangsService ForderungVSe {
+		Interface {
+			meldeForderung(Forderung);
+		}
+		EntitaetsService meldeForderung -> FinanzwesenES;
+		VOT >Forderung;
+	}
+	VorgangsService RechnungVSe {
+		Interface {
+			erstelleRechnung(Forderung);
+		}
+		EntitaetsService erstelleRechnung -> FinanzwesenES;
+		VOT Rechnung>;
+	}
+	Workflow {
+		meldeForderung -> erstelleRechnung;
+	}
+}
+
+VorgangsService ProduktionVS {
+	Interface {
+		erteileProduktionsauftrag(Produktionsauftrag);
+		indivigualisierungBeauftragen(Individualisierung);
+	}
+}
+
+EntitaetsService KundeES {
+	Interface {
+		Kunde createKunde();
+		Kunde readKunde(ID);
+		updateKunde(Kunde);
+		deleteKunde(Kunde);
+	}
+	KOT Kunde;
+}
+EntitaetsService AuftragES {
+	Interface {
+		Bestellung createBestellung();
+		Bestellung readBestellung(ID);
+		updateBestellung(Bestellung);
+		
+		Produktionsauftrag createProduktionsauftrag();
+		Produktionsauftrag readProduktionsauftrag(ID);
+		updateProduktionsauftrag(Produktionsauftrag);
+	
+		Individualisierung createIndividualisierung();
+		Individualisierung readIndividualisierung(ID);
+		updateIndividualisierung(Individualisierung);
+		
+		ECarPreisverzeichnis readECarPreisverzeichnis();
+		updateECarPreisverzeichnis(ECarPreisverzeichnis);
+	}
+	KOT Bestellung;
+	KOT Produktionsauftrag;
+	KOT Individualisierung;
+	KOT ECarPreisverzeichnis;
+}
+
+EntitaetsService AuslieferungES {
+	Interface {
+		Lieferung createLieferung();
+		Lieferung readLieferung(ID);
+		updateLieferung(Lieferung);
+	}
+	KOT Lieferung;
+}
+
+EntitaetsService FinanzwesenES {
+	Interface {
+		Forderung createForderung();
+		Forderung readForderung(ID);
+		updateForderung(Forderung);
+		
+		RechnungZahlung createRechnungZahlung();
+		RechnungZahlung readRechnungZahlung(ID);
+		updateRechnungZahlung(RechnungZahlung);
+	}
+	KOT Forderung;
+	KOT RechnungZahlung;
+}

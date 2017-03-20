@@ -1,0 +1,61 @@
+AwS: ecar v 0.2
+
+VOS { 
+	Rezeption {
+		@merge Rezeption
+		VOT >Buchung {
+			Kunde k; 
+			buchung() {
+				
+			}
+		}
+		@merge Rezeption
+		VOT >Buchung2 {
+			Kunde k; 
+			buchung() {
+				
+			}
+		}
+		@merge Verkehrsamt
+		VOT >Buchung3 {
+			Kunde k; 
+			buchung() {
+				
+			}
+		}
+		VOT >Buchung4 {
+			Kunde k; 
+			buchung() {
+				
+			}
+		}
+		@name Rezeption
+		VOT >Buchung5 {
+			Kunde k; 
+			buchung() {
+				
+			}
+		}
+	}
+}
+
+KOS {
+	Kundenservice {
+		@merge Kundenservice
+		OOT Kunde {
+			DT String name;
+			DT String strasse;
+			Fahrer fahrer;
+		}
+		@merge Kundenservice
+		OOT Fahrer {
+			DT String name;
+			DT String strasse;
+		}
+	}
+	LOT Preisliste {
+		DT String name;
+	}
+	TOT Lieferung {
+	}
+}
