@@ -6,10 +6,10 @@ The transformation involves three layers. An AwS model is a system specification
 
 <img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Architecture-Overview.png" width="50%" height="50%" />
 
-The following examples show the initial KOS and VOS specification together with the resulting service classes and entities:
+The following examples show a simple initial KOS and VOS specification together with the resulting service classes and entities:
 
 <img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Example-Process-Service-Definition.png" width="50%" height="50%" />
 
-<img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Example-Entity-Classes.png" width="80%" height="98%" />
+<img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Example-Entity-Classes.png" width="70%" height="70%" />
 
-<img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Example-Service-Class.png" width="60%" height="60%" />
+<img src="https://raw.githubusercontent.com/fhaer/AWS-Java-Template-Code-Generator/master/Example-Service-Class.png" width="55%" height="55%" />
